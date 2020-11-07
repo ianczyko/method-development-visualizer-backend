@@ -1,12 +1,10 @@
 # method-development-visualizer-backend
 
-(niektualne linki)
+![Ubuntu g++ build](https://github.com/ianczyko/method-development-visualizer-backend/workflows/Ubuntu%20g++%20build/badge.svg) - Odpowiada na pytanie czy projekt się kompiluje
 
-[![Ubuntu g++ build](https://github.com/ianczyko/PROE2020L_gr_102_zadanieprogramistyczne1/workflows/Ubuntu%20g++%20build/badge.svg)](https://github.com/ianczyko/PROE2020L_gr_102_zadanieprogramistyczne1/actions) - Odpowiada na pytanie czy projekt się kompiluje
+[![Build Status](https://travis-ci.org/ianczyko/method-development-visualizer-backend.svg?branch=main)](https://travis-ci.org/ianczyko/method-development-visualizer-backend) - Odpowiada na pytanie czy projekt przechodzi testy
 
-[![Build Status](https://travis-ci.com/ianczyko/PROE2020L_gr_102_zadanieprogramistyczne1.svg?branch=master)](https://travis-ci.com/ianczyko/PROE2020L_gr_102_zadanieprogramistyczne1) - Odpowiada na pytanie czy projekt przechodzi testy
-
-[![codecov](https://codecov.io/gh/ianczyko/PROE2020L_gr_102_zadanieprogramistyczne1/branch/master/graph/badge.svg)](https://codecov.io/gh/ianczyko/PROE2020L_gr_102_zadanieprogramistyczne1) - Pokazuje % pokrycia testami kodów źródłowych w ./src
+[![codecov](https://codecov.io/gh/ianczyko/method-development-visualizer-backend/branch/main/graph/badge.svg?token=47IFD5DQNB)](https://codecov.io/gh/ianczyko/method-development-visualizer-backend) - Pokazuje % pokrycia testami kodów źródłowych w ./src
 
 ## Opis projektu
 
