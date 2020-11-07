@@ -1,6 +1,6 @@
 # method-development-visualizer-backend
 
-![Ubuntu g++ build](https://github.com/ianczyko/method-development-visualizer-backend/workflows/Ubuntu%20g++%20build/badge.svg) - Odpowiada na pytanie czy projekt się kompiluje
+![ubuntu-cmake-compile](https://github.com/ianczyko/method-development-visualizer-backend/workflows/ubuntu-cmake-compile/badge.svg) - Odpowiada na pytanie czy projekt się kompiluje
 
 [![Build Status](https://travis-ci.org/ianczyko/method-development-visualizer-backend.svg?branch=main)](https://travis-ci.org/ianczyko/method-development-visualizer-backend) - Odpowiada na pytanie czy projekt przechodzi testy
 
