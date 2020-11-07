@@ -13,6 +13,6 @@
 Przy pomocy cmake:
 
 ```bash
-mkdir build ; cd build ; cmake .. ; make ; ./main
+mkdir build ; cd build ; cmake .. ; make ; ./method-development-visualizer-backend
 # opcjonoalnie w celu wygenerowania i uruchomienia testów
 mkdir build ; cd build ; cmake -D TEST:BOOL=TRUE .. ; make ; ./tester
