@@ -1,0 +1,13 @@
+name: Ubuntu g++ build
+on:
+  push:
+    branches: [ master ]
+jobs:
+  ubuntu-build-sanity:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Running Cmake
+      run: cmake .
+    - name: Running make
+      run: make
