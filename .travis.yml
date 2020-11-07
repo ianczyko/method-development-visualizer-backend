@@ -1,0 +1,21 @@
+dist: trusty
+sudo: true
+language: cpp
+compiler: g++
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-7
+      - cmake
+script:
+  - export CXX=g++-7
+  - mkdir build
+  - cd build
+  - cmake -D TEST:BOOL=TRUE -D ENABLE_COVERAGE:BOOL=TRUE ..
+  - make
+  - ./tester
+after_success:
+  - rm -rf CMakeFiles/tester.dir/tests
+  - bash <(curl -s https://codecov.io/bash)
