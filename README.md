@@ -1,4 +1,4 @@
-# method-development-visualizer-backend
+# method-development-visualizer-backend (Work in progress)
 
 ![ubuntu-cmake-compile](https://github.com/ianczyko/method-development-visualizer-backend/workflows/ubuntu-cmake-compile/badge.svg) - Odpowiada na pytanie czy projekt się kompiluje
 
