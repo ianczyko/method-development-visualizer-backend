@@ -15,6 +15,9 @@ void Node::setDescription(const std::string &description) {
 void Node::setAliases(const std::vector<std::string> &aliases) {
     this->aliases = aliases;
 }
+void Node::setChildren(const std::vector<std::shared_ptr<Node>> &children) {
+    this->children = children;
+}
 const std::string &Node::getName() const {
     return this->name;
 }
@@ -24,6 +27,9 @@ const std::string &Node::getDescription() const {
 const std::vector<std::string> &Node::getAliases() const {
     return this->aliases;
 }
+const std::vector<std::shared_ptr<Node>> &Node::getChildren() const {
+    return children;
+}
 void Node::addAlias(const std::string &alias) {
     this->aliases.push_back(alias);
 }
@@ -32,3 +38,13 @@ void Node::removeAlias(const std::string &alias) {
         if(this->aliases[i] == alias) this->aliases.erase(this->aliases.begin() + i);
     }
 }
+void Node::addChild(const std::shared_ptr<Node>& node) {
+    this->children.push_back(node);
+}
+void Node::removeChild(const std::string &nodeName) {
+    for(unsigned i=0; i<this->children.size(); i++){
+        if(this->children[i]->getName() == nodeName) this->children.erase(this->children.begin() + i);
+    }
+}
+
+
