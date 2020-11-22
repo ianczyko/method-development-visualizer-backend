@@ -28,7 +28,6 @@ public:
     void setName(const std::string &name);
     void setDescription(const std::string &description);
     void setAliases(const std::vector<std::string> &aliases);
-    void setChildren(const std::vector<std::shared_ptr<Node>> &children);
 };
 
 

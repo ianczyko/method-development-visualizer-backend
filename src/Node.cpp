@@ -15,9 +15,6 @@ void Node::setDescription(const std::string &description) {
 void Node::setAliases(const std::vector<std::string> &aliases) {
     this->aliases = aliases;
 }
-void Node::setChildren(const std::vector<std::shared_ptr<Node>> &children) {
-    this->children = children;
-}
 const std::string &Node::getName() const {
     return this->name;
 }
