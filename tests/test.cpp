@@ -1,4 +1,4 @@
-//Autor: Anczykowski Igor
+//Author: Anczykowski Igor
 
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"

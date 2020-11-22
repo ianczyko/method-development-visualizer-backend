@@ -1,4 +1,4 @@
-//Autor: Anczykowski Igor
+//Author: Anczykowski Igor
 
 #include "Node.hpp"
 

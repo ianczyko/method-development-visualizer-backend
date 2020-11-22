@@ -1,4 +1,4 @@
-//Autor: Anczykowski Igor
+//Author: Anczykowski Igor
 
 #ifndef METHOD_DEVELOPMENT_VISUALIZER_BACKEND_NODE_HPP
 #define METHOD_DEVELOPMENT_VISUALIZER_BACKEND_NODE_HPP
