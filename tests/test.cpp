@@ -62,4 +62,25 @@ TEST_CASE( "Node", "[node]" ) {
         REQUIRE(node.getAliases().at(0) == "Shade");
         REQUIRE(node.getAliases().at(1) == "shaDE");
     }
+    SECTION("Node add/remove children") {
+        auto node = std::make_shared<Node>("node");
+        auto node_1 = std::make_shared<Node>("node_1");
+        auto node_2 = std::make_shared<Node>("node_2");
+        auto node_3 = std::make_shared<Node>("node_3");
+
+        REQUIRE( node->getChildren().empty() );
+        node->addChild(node_1);
+        REQUIRE( node->getChildren().at(0)->getName() == "node_1" );
+        node->addChild(node_2);
+        REQUIRE( node->getChildren().at(0)->getName() == "node_1" );
+        REQUIRE( node->getChildren().at(1)->getName() == "node_2" );
+        node->addChild(node_3);
+        REQUIRE( node->getChildren().at(0)->getName() == "node_1" );
+        REQUIRE( node->getChildren().at(1)->getName() == "node_2" );
+        REQUIRE( node->getChildren().at(2)->getName() == "node_3" );
+        node->removeChild("node_2");
+        REQUIRE( node->getChildren().at(0)->getName() == "node_1" );
+        REQUIRE( node->getChildren().at(1)->getName() == "node_3" );
+
+    }
 }
