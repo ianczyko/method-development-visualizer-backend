@@ -81,6 +81,15 @@ TEST_CASE( "Node", "[node]" ) {
         node->removeChild("node_2");
         REQUIRE( node->getChildren().at(0)->getName() == "node_1" );
         REQUIRE( node->getChildren().at(1)->getName() == "node_3" );
-
+    }
+    SECTION("Node ownership transfer") {
+        auto node = std::make_shared<Node>("node");
+        {
+            auto node_1 = std::make_shared<Node>("node_1");
+            REQUIRE(node->getChildren().empty());
+            node->addChild(node_1);
+            REQUIRE(node->getChildren().at(0)->getName() == "node_1");
+        }
+        REQUIRE(node->getChildren().at(0)->getName() == "node_1");
     }
 }
