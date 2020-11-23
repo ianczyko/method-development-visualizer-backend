@@ -118,3 +118,63 @@ TEST_CASE( "Node", "[node]" ) {
         REQUIRE(node->getChildren().at(0)->getName() == "node_1");
     }
 }
+
+TEST_CASE( "Tree", "[tree]" ) {
+    SECTION("Tree creation") {
+        auto node = std::make_shared<Node>("node");
+        Tree tree(node);
+        REQUIRE(tree.getRootNode()->getName() == "node");
+    }
+    SECTION("Tree set root") {
+        auto node = std::make_shared<Node>("node");
+        auto node_1 = std::make_shared<Node>("node_1");
+        Tree tree(node);
+        REQUIRE(tree.getRootNode()->getName() == "node");
+        tree.setRootNode(node_1);
+        REQUIRE(tree.getRootNode()->getName() == "node_1");
+    }
+    SECTION("Tree findNode()") {
+        auto node = std::make_shared<Node>("node");
+        auto node_1 = std::make_shared<Node>("node_1");
+        auto node_1_1 = std::make_shared<Node>("node_1_1");
+        auto node_1_2 = std::make_shared<Node>("node_1_2");
+        auto node_2 = std::make_shared<Node>("node_2");
+        auto node_3 = std::make_shared<Node>("node_3");
+        node_1->addChild(node_1_1);
+        node_1->addChild(node_1_2);
+        node->addChild(node_1);
+        node->addChild(node_2);
+        node->addChild(node_3);
+        Tree tree(node);
+        REQUIRE(tree.findNode("node")->getName() == "node");
+        REQUIRE(tree.findNode("node that do not exists") == nullptr);
+        REQUIRE(tree.findNode("node_1")->getName() == "node_1");
+        REQUIRE(tree.findNode("node_1_1")->getName() == "node_1_1");
+    }
+    SECTION("Tree removeNode()") {
+        auto node = std::make_shared<Node>("node");
+        auto node_1 = std::make_shared<Node>("node_1");
+        auto node_1_1 = std::make_shared<Node>("node_1_1");
+        auto node_1_2 = std::make_shared<Node>("node_1_2");
+        auto node_2 = std::make_shared<Node>("node_2");
+        auto node_3 = std::make_shared<Node>("node_3");
+        node_1->addChild(node_1_1);
+        node_1->addChild(node_1_2);
+        node->addChild(node_1);
+        node->addChild(node_2);
+        node->addChild(node_3);
+        Tree tree(node);
+        REQUIRE(tree.findNode("node")->getName() == "node");
+        REQUIRE(tree.findNode("node_1")->getName() == "node_1");
+        REQUIRE(tree.findNode("node_1_1")->getName() == "node_1_1");
+        tree.removeNode("node_1_1");
+        REQUIRE(tree.findNode("node")->getName() == "node");
+        REQUIRE(tree.findNode("node_1")->getName() == "node_1");
+        REQUIRE(tree.findNode("node_1_1") == nullptr);
+        tree.removeNode("node_1");
+        REQUIRE(tree.findNode("node")->getName() == "node");
+        REQUIRE(tree.findNode("node_1") == nullptr);
+        REQUIRE(tree.findNode("node_1_1") == nullptr);
+        REQUIRE(tree.findNode("node_1_2") == nullptr);
+    }
+}
