@@ -1,5 +1,4 @@
 dist: trusty
-sudo: true
 language: cpp
 compiler: g++
 addons:

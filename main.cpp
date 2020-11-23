@@ -1,6 +1,6 @@
-//Autor: Anczykowski Igor
+//Author: Anczykowski Igor
 
 
-int main(){
+int main() {
     return 0;
 }

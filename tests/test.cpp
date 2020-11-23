@@ -1,8 +1,9 @@
-//Autor: Anczykowski Igor
+//Author: Anczykowski Igor
 
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 #include "../src/Node.hpp"
+#include "../src/Tree.hpp"
 #include <iostream>
 #include <sstream>
 
@@ -69,6 +70,7 @@ TEST_CASE( "Node", "[node]" ) {
         auto node_3 = std::make_shared<Node>("node_3");
 
         REQUIRE( node->getChildren().empty() );
+        REQUIRE( node->getParent() == nullptr );
         node->addChild(node_1);
         REQUIRE( node->getChildren().at(0)->getName() == "node_1" );
         node->addChild(node_2);
@@ -81,6 +83,38 @@ TEST_CASE( "Node", "[node]" ) {
         node->removeChild("node_2");
         REQUIRE( node->getChildren().at(0)->getName() == "node_1" );
         REQUIRE( node->getChildren().at(1)->getName() == "node_3" );
+    }
+    SECTION("Node parent checks") {
+        auto node = std::make_shared<Node>("node");
+        auto node_1 = std::make_shared<Node>("node_1");
+        auto node_2 = std::make_shared<Node>("node_2");
+        auto node_3 = std::make_shared<Node>("node_3");
 
+        node_2->addChild(node_3);
+
+        REQUIRE( node->getChildren().empty() );
+        REQUIRE( node->getParent() == nullptr );
+        node->addChild(node_1);
+        REQUIRE( node->getChildren().at(0)->getName() == "node_1" );
+        REQUIRE( node->getChildren().at(0)->getParent()->getName() == "node" );
+        node->addChild(node_2);
+        REQUIRE( node->getChildren().at(0)->getName() == "node_1" );
+        REQUIRE( node->getChildren().at(1)->getName() == "node_2" );
+        REQUIRE( node->getChildren().at(0)->getParent()->getName() == "node" );
+        REQUIRE( node->getChildren().at(1)->getParent()->getName() == "node" );
+
+        REQUIRE( node->getChildren().at(1)->getChildren().at(0)->getParent()->getName() == "node_2" );
+
+
+    }
+    SECTION("Node ownership transfer") {
+        auto node = std::make_shared<Node>("node");
+        {
+            auto node_1 = std::make_shared<Node>("node_1");
+            REQUIRE(node->getChildren().empty());
+            node->addChild(node_1);
+            REQUIRE(node->getChildren().at(0)->getName() == "node_1");
+        }
+        REQUIRE(node->getChildren().at(0)->getName() == "node_1");
     }
 }
