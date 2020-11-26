@@ -4,15 +4,15 @@
 
 [![Build Status](https://travis-ci.org/ianczyko/method-development-visualizer-backend.svg?branch=main)](https://travis-ci.org/ianczyko/method-development-visualizer-backend) - Odpowiada na pytanie czy projekt przechodzi testy
 
-[![codecov](https://codecov.io/gh/ianczyko/method-development-visualizer-backend/branch/main/graph/badge.svg?token=47IFD5DQNB)](https://codecov.io/gh/ianczyko/method-development-visualizer-backend) - Pokazuje % pokrycia testami kodów źródłowych w ./src
+[![codecov](https://codecov.io/gh/ianczyko/method-development-visualizer-backend/branch/main/graph/badge.svg?token=47IFD5DQNB)](https://codecov.io/gh/ianczyko/method-development-visualizer-backend) - Pokazuje % pokrycia testami kodów źródłowych w method-development-visualizer/src
 
 ## Opis projektu
 
-### Sposob kompilacji (i uruchomienia)
+### Sposob kompilacji części c++
 
 Przy pomocy cmake:
 
 ```bash
-mkdir build ; cd build ; cmake .. ; make ; ./method-development-visualizer-backend
+cd method-development-visualizer ; mkdir build ; cd build ; cmake .. ; make
 # opcjonoalnie w celu wygenerowania i uruchomienia testów
-mkdir build ; cd build ; cmake -D TEST:BOOL=TRUE .. ; make ; ./tester
+cd method-development-visualizer ; mkdir build ; cd build ; cmake -D TEST:BOOL=TRUE .. ; make
