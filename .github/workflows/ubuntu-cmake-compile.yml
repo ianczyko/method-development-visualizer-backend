@@ -8,6 +8,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Running Cmake
-      run: cmake .
+      run: cmake ./method-development-visualizer
     - name: Running make
       run: make
