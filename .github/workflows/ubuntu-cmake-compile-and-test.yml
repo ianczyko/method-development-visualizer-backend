@@ -1,4 +1,4 @@
-name: ubuntu-cmake-compile_and_test
+name: ubuntu-cmake-compile-and-test
 
 on: [push]
 
@@ -10,7 +10,7 @@ jobs:
     - name: Installing Boost and python3-dev
       run: sudo apt-get update && sudo apt-get install libboost-all-dev python3-dev
     - name: Create build catalog
-      run: mkdir build ; cd build
+      run: cd methodDevelopment ; mkdir build ; cd build
     - name: Run CMake
       run: cmake -D TEST:BOOL=TRUE -D ENABLE_COVERAGE:BOOL=TRUE ..
     - name: Run make
