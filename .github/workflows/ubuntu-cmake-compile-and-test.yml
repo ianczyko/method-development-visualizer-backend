@@ -12,13 +12,18 @@ jobs:
     - name: Create build catalog
       run: cd methodDevelopment ; mkdir build ; cd build
     - name: Run CMake
+      working-directory: ./methodDevelopment/build
       run: cmake -D TEST:BOOL=TRUE -D ENABLE_COVERAGE:BOOL=TRUE ..
     - name: Run make
+      working-directory: ./methodDevelopment/build
       run: make
     - name: Run tests
+      working-directory: ./methodDevelopment/build
       run: ./tester
     - name: Remove redundant data
+      working-directory: ./methodDevelopment/build
       run: rm -rf CMakeFiles/tester.dir/tests
     - name: Upload the results
+      working-directory: ./methodDevelopment/build
       run: bash <(curl -s https://codecov.io/bash)
 
