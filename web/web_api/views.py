@@ -4,6 +4,9 @@ from django.http import JsonResponse
 from django.forms.models import model_to_dict
 from .models import Node
 from .models import Alias
+import sys
+sys.path.append("..")
+from methodDevelopment.build.method_development import hello_cpp
 
 def graph(request):
     nodes = [model_to_dict(node) for node in Node.objects.all()]
@@ -12,3 +15,7 @@ def graph(request):
         node['aliases'] = aliases
     nodes_dict = {'nodes':nodes}
     return JsonResponse(nodes_dict)
+
+def cpp_hello_world(request):
+    return HttpResponse(hello_cpp())
+    # returns text 'hello from c++'

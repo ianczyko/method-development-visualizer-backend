@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from web_api.views import graph
+from web_api.views import cpp_hello_world
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('graph/', graph),
+    path('api/graph/', graph),
+    path('api/cpp_hello_world/', cpp_hello_world),
 ]
