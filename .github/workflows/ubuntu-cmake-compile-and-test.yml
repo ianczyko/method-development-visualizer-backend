@@ -13,13 +13,13 @@ jobs:
       run: cd methodDevelopment ; mkdir build ; cd build
     - name: Run CMake
       working-directory: ./methodDevelopment/build
-      run: cmake -D TEST:BOOL=TRUE -D ENABLE_COVERAGE:BOOL=TRUE ..
+      run: cmake -D TEST:BOOL=TRUE ..
     - name: Run make
       working-directory: ./methodDevelopment/build
       run: make
     - name: Run tests
       working-directory: ./methodDevelopment/build
-      run: ./tester
+      run: ctest -VV
     - name: Remove redundant data
       working-directory: ./methodDevelopment/build
       run: rm -rf CMakeFiles/tester.dir/tests
