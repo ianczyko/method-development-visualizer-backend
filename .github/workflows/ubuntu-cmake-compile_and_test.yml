@@ -1,0 +1,24 @@
+name: ubuntu-cmake-compile_and_test
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Installing Boost and python3-dev
+      run: sudo apt-get update && sudo apt-get install libboost-all-dev python3-dev
+    - name: Create build catalog
+      run: mkdir build ; cd build
+    - name: Run CMake
+      run: cmake -D TEST:BOOL=TRUE -D ENABLE_COVERAGE:BOOL=TRUE ..
+    - name: Run make
+      run: make
+    - name: Run tests
+      run: ./tester
+    - name: Remove redundant data
+      run: rm -rf CMakeFiles/tester.dir/tests
+    - name: Upload the results
+      run: bash <(curl -s https://codecov.io/bash)
+
