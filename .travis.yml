@@ -6,12 +6,11 @@ addons:
   apt:
     update: true
     sources:
-      - sourceline: 'ppa:mhier/libboost-latest'
       - ubuntu-toolchain-r-test
     packages:
       - g++-7
       - cmake
-      - boost1.74
+      - libboost-all-dev
       - python3-dev
 script:
   - export CXX=g++-7
