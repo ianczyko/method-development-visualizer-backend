@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.1)
 project(method-development-visualizer-backend)
 
 # Find python 3 and Boost (Boost.python)
