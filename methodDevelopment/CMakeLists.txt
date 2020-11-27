@@ -19,7 +19,7 @@ list(REMOVE_DUPLICATES main_INCLUDE_DIRS)
 
 option(ENABLE_COVERAGE "Enable coverage reporting" FALSE)
 if(ENABLE_COVERAGE)
-    add_compile_options(--coverage)
+    add_compile_options(--lgcov)
 endif()
 
 add_compile_options(-Wall -std=c++14 -g)
