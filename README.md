@@ -22,6 +22,7 @@ bazie danych.
 - python3 wraz z:
   - python3-dev
   - pipenv
+  - Django (instalowane później w pipenv)
 
 Instalacja wszystkich zależności:
 
@@ -38,7 +39,11 @@ Przy pomocy cmake:
 
 ```bash
 cd methodDevelopment ; mkdir build ; cd build ; cmake .. ; make
-# opcjonoalnie w celu wygenerowania testów
+```
+
+Alternatywnie w celu wygenerowania testów
+
+```bash
 cd methodDevelopment ; mkdir build ; cd build ; cmake -D TEST:BOOL=TRUE .. ; make
 # uruchomienie testów
 ctest
@@ -52,9 +57,10 @@ W katalogu projektu:
 
 ```bash
 cd web
+pipenv install django==3.1.3
 pipenv shell
 # następnie wewnąrz wirtualnej powłoki:
-python manage.py runserver
+python3 manage.py runserver
 ```
 
 Po wykonaniu powyższych kroków, powinny zacząć działać poniższe adresy:
