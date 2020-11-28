@@ -4,7 +4,7 @@
 
 ![ubuntu-cmake-compile-and-test](https://github.com/ianczyko/method-development-visualizer-backend/workflows/ubuntu-cmake-compile-and-test/badge.svg) - Odpowiada na pytanie czy projekt przechodzi testy
 
-[![codecov](https://codecov.io/gh/ianczyko/method-development-visualizer-backend/branch/main/graph/badge.svg?token=47IFD5DQNB)](https://codecov.io/gh/ianczyko/method-development-visualizer-backend) - Pokazuje % pokrycia testami kodów źródłowych w method-development-visualizer/src
+[![codecov](https://codecov.io/gh/ianczyko/method-development-visualizer-backend/branch/main/graph/badge.svg?token=47IFD5DQNB)](https://codecov.io/gh/ianczyko/method-development-visualizer-backend) - Pokazuje % pokrycia testami kodów źródłowych w /src
 
 ## Opis projektu
 

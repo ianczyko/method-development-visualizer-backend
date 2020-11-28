@@ -22,7 +22,7 @@ jobs:
       run: ctest
     - name: Remove redundant data
       working-directory: ./methodDevelopment/build
-      run: rm -rf CMakeFiles/tester.dir/tests
+      run: rm -rf *core_to_py_api.cpp.gcov
     - name: Upload the results
       working-directory: ./methodDevelopment/build
       run: bash <(curl -s https://codecov.io/bash)
