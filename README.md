@@ -37,9 +37,9 @@ pip3 install pipenv # pipenv
 Przy pomocy cmake:
 
 ```bash
-cd method-development-visualizer ; mkdir build ; cd build ; cmake .. ; make
+cd methodDevelopment ; mkdir build ; cd build ; cmake .. ; make
 # opcjonoalnie w celu wygenerowania testów
-cd method-development-visualizer ; mkdir build ; cd build ; cmake -D TEST:BOOL=TRUE .. ; make
+cd methodDevelopment ; mkdir build ; cd build ; cmake -D TEST:BOOL=TRUE .. ; make
 # uruchomienie testów
 ctest
 ```
