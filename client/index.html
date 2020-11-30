@@ -1,0 +1,132 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title>Graph prototype</title>
+    <script src="cytoscape.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <div class="page">
+      <div class="headerLine">
+        <span class="headerText">Graph prototype</span>
+      </div>
+      <div class="underHeaderLine">
+        <div class="Flex" id="displayGraphDIV"></div>
+        <div class="Flex" id="fillData">
+          <div class="inputForm">
+            <h1>Name</h1>
+            <input type="text" id="nameInput" name="fname">
+          </div>
+          <div class="inputForm">
+            <h1>Description</h1>
+            <input type="text" id="descriptionInput" name="fname">
+          </div>
+          <div class="inputForm">
+            <h1>Parent</h1>
+            <input type="text" id="parentInput" name="fname">
+          </div>
+          <div class="inputForm">
+            <h1>Aliases</h1>
+            <input type="text" id="aliasesInput" name="fname">
+          </div>
+        </div>
+    </div>
+    <script>
+      const elementsArray=[]
+      function addNode(nodeName){
+        elementsArray.push({
+          group: 'nodes',
+          data:{id:nodeName}
+        });
+      }
+      function addConnection(nodeName1, nodeName2){
+        let connectionID = nodeName1.toString()+nodeName2.toString();
+        elementsArray.push({
+          group: 'edges',
+          data:{
+            id:connectionID,
+            source:nodeName1.toString(),
+            target:nodeName2.toString()
+          }
+        })
+      }
+      function getNodeByID(id, array){
+        for(i=0;i<array.length;i++){
+          if(array[i].name==id)return array[i];
+        }
+      }
+      const Http = new XMLHttpRequest();
+      const url = 'http://localhost:8000/api/graph/';
+      Http.open("GET", url);
+      Http.send();
+      responseText = '';
+      let responseObj;
+      Http.onload=()=>{
+        responseObj=JSON.parse(Http.response)
+        for(i=0;i<responseObj.nodes.length;i++){
+          node=responseObj.nodes[i];
+          if(node.parent==""){
+            addNode(node.name);
+          }else{
+            addNode(node.name);
+            addConnection(node.name, node.parent);
+          }
+        }
+        var cy = cytoscape({
+          container: document.getElementById('displayGraphDIV'),
+          elements: elementsArray,
+          style: [{
+            selector:'node',
+            style:{
+              'label':'data(id)',
+            }
+          }],
+          style: cytoscape.stylesheet()
+          .selector('edge')
+            .css({
+              'width': 3,
+              'line-color': '#369',
+              'target-arrow-color': '#369',
+              'target-arrow-shape': 'triangle',
+              'label': 'data(label)',
+              'font-size': '14px',
+              'color': '#777'
+            })
+          .selector('node')
+            .css({
+              'content': 'data(id)',
+              'text-valign': 'center',
+              'color': 'white',
+              'text-outline-width': 2,
+              'text-outline-color': '#888',
+              'background-color': '#888'
+            })
+          .selector(':selected')
+            .css({
+              'background-color': 'black',
+              'line-color': 'black',
+              'target-arrow-color': 'black',
+              'source-arrow-color': 'black',
+              'text-outline-color': 'black'
+              }),
+        });
+        cy.on('click','node', function(evt){
+          var node=evt.target;
+          document.getElementById('nameInput').value=getNodeByID(node.id(),responseObj.nodes).name;
+          document.getElementById('descriptionInput').value=getNodeByID(node.id(),responseObj.nodes).description;
+          if(getNodeByID  (node.id(),responseObj.nodes).parent!=""){
+            document.getElementById('parentInput').value=getNodeByID(node.id(),responseObj.nodes).parent;
+          }else{
+            document.getElementById('parentInput').value="none";
+          }
+          document.getElementById('aliasesInput').value=getNodeByID(node.id(),responseObj.nodes).aliases.join(',');
+        })
+      }
+    </script>
+    
+</body>
+</html>
