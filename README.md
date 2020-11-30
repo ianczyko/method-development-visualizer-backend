@@ -1,4 +1,4 @@
-# method-development-visualizer-backend (Work in progress)
+# method-development-visualizer-backend
 
 ![ubuntu-cmake-compile](https://github.com/ianczyko/method-development-visualizer-backend/workflows/ubuntu-cmake-compile/badge.svg) - Odpowiada na pytanie czy projekt się kompiluje
 
@@ -17,10 +17,13 @@ bazie danych.
 
 ### Zależności
 
-- Boost (z skompilowanym Boost.Python i Boost.Test)
+- Boost 1.71+, wraz z skompilowanymi:
+  - Boost.Python 
+  - Boost.Test
 - CMake
 - python3 wraz z:
   - python3-dev
+  - pip3
   - pipenv
   - Django (instalowane później w pipenv)
 
@@ -30,8 +33,11 @@ Instalacja wszystkich zależności:
 sudo apt-get install libboost-all-dev # Boost
 sudo apt-get install cmake # cmake
 sudo apt-get install python3-dev # python3-dev
+sudo apt-get install pip3 # pip3
 pip3 install pipenv # pipenv
 ```
+
+Uwaga, na dzień dzisiejszy libboost-all-dev zainstaluje Boost 1.71 jedynie na ubuntu 20.04 z aktualnym apt-get.
 
 ### Sposob kompilacji części C++
 
@@ -48,8 +54,6 @@ cd methodDevelopment ; mkdir build ; cd build ; cmake -D TEST:BOOL=TRUE .. ; mak
 # uruchomienie testów
 ctest
 ```
-
-Testy na ten moment pokrywają tylko część napisaną w "czystym" C++.
 
 ### Przygotowanie wirtualnego środowiska Pythona
 
@@ -70,5 +74,18 @@ Po wykonaniu powyższych kroków, powinny zacząć działać poniższe adresy:
 
 Na ten moment:
 
-- **/graph/** zwraca strukturę grafu aktualnie znajdującej się w bazie danych w formacie JSON.
-- **/cpp_hello_world/** zwraca zawartość przykładowej funkcji w C++.
+- **api/graph/** zwraca strukturę grafu aktualnie znajdującej się w bazie danych w formacie JSON.
+- **api/cpp_hello_world/** zwraca zawartość przykładowej funkcji w C++.
+
+Uwaga, część kodu źródłowego części Python została wygenerowana przez Django. Wykorzystane zostały komendy:
+
+```bash
+django-admin startproject web_config .
+python3 manage.py startapp web_api
+```
+
+## Frontend
+
+Po skonfigurowaniu backendu, można uruchomić przeglądarkowy interfejs aplikacji, który pobiera dane z endpointu /api/graph/ i wyświetla je z pomocą biblioteki cytoscape.js. Po naciśnięciu na węzeł wyświetlają się jego szczegółowe informacje.
+
+W tym momencie uruchomienie interfejsu wymaga otworzenia client/index.html w przeglądarce.
