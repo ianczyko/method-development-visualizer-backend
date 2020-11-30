@@ -14,7 +14,10 @@ def graph(request):
         aliases = [alias.alias for alias in Alias.objects.filter(origin_name__exact=node['name'])]
         node['aliases'] = aliases
     nodes_dict = {'nodes':nodes}
-    return JsonResponse(nodes_dict)
+    response = JsonResponse(nodes_dict)
+    # TODO: remove temporary solution for CORS
+    response['Access-Control-Allow-Origin'] = '*'
+    return response
 
 def cpp_hello_world(request):
     return HttpResponse(hello_cpp())
