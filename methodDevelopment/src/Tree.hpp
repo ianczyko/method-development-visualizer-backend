@@ -6,13 +6,13 @@
 #include "Node.hpp"
 
 class Tree {
-    std::shared_ptr<Node> root_node;
+    std::shared_ptr<Node> root_node_;
 public:
-    explicit Tree(const std::shared_ptr<Node> &rootNode);
+    explicit Tree(const std::shared_ptr<Node> &root_node);
     std::shared_ptr<Node> getRootNode() const;
-    std::shared_ptr<Node> findNode(const std::string &nodeName) const;
-    void removeNode(const std::string &nodeName) const;
-    void setRootNode(const std::shared_ptr<Node> &rootNode);
+    std::shared_ptr<Node> findNode(const std::string &node_name) const;
+    void removeNode(const std::string &node_name) const;
+    void setRootNode(const std::shared_ptr<Node> &root_node);
 };
 
 
