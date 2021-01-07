@@ -15,11 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from web_api.views import graph
-from web_api.views import cpp_hello_world
+from web_api.views import (
+    graph,
+    node_at,
+    add_node_manual,
+    add_node_auto,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/graph/', graph),
-    path('api/cpp_hello_world/', cpp_hello_world),
+    path('api/node/<str:name>/', node_at),
+    path('api/add/manual/', add_node_manual),
+    path('api/add/auto/', add_node_auto),
 ]

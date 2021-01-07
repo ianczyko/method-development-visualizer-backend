@@ -5,6 +5,7 @@ from django.forms.models import model_to_dict
 from .models import Node
 from .models import Alias
 import sys
+import json
 sys.path.append("..")
 from methodDevelopment.build import method_development
 
@@ -38,7 +39,37 @@ def graph(request):
         ]
     }
     response = JsonResponse(nodes_dict)
-    # TODO: remove temporary solution for CORS
     response['Access-Control-Allow-Origin'] = '*'
     return response
 
+def node_at(request, name):
+    if request.method == "GET":
+        requesed_node = tree.findNode(name)
+        response = JsonResponse({
+            'name':requesed_node.getName(),
+            'description':requesed_node.getDescription(),
+            'parent':requesed_node.getParentName(),
+            'alises':requesed_node.getAliases()
+        })
+        response['Access-Control-Allow-Origin'] = '*'
+        return response
+    if request.method == "DELETE":
+        # TODO: return error response if not found
+        tree.removeNode(name)
+        return HttpResponse('') 
+
+def add_node_manual(request):
+    if request.method != "POST":
+        return HttpResponse('') # TODO: return error response
+    node_to_add = json.loads(request.body.decode('utf-8'))
+    py_node = method_development.NodePy(
+        node_to_add['name'],
+        node_to_add['parent'],
+        node_to_add['description'],
+        node_to_add['aliases']
+    )
+    tree.manualAdd(py_node)
+    return HttpResponse('')
+
+def add_node_auto(request):
+    pass

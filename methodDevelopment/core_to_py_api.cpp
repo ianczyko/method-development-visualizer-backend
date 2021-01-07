@@ -2,7 +2,6 @@
 #include <boost/python.hpp>
 #include <utility>
 #include "src/Tree.hpp"
-#include "src/Node.hpp"
 using namespace boost::python;
 
 class NodePy {
@@ -72,6 +71,16 @@ public:
         }
         return tree_list;
     }
+    NodePy findNode(const std::string& name){
+        auto foundNode = this->tree_.findNode(name);
+        return NodePy(foundNode);
+    }
+    void manualAdd(NodePy node_py){
+        this->tree_.addNode(node_py.toNode(), node_py.getParentName());
+    }
+    void removeNode(const std::string& name){
+        this->tree_.removeNode(name);
+    }
 };
 
 BOOST_PYTHON_MODULE(method_development)
@@ -85,5 +94,8 @@ BOOST_PYTHON_MODULE(method_development)
     class_<TreePyManager>("TreePyManager")
         .def("buildTree", &TreePyManager::buildTree)
         .def("getTree", &TreePyManager::getTree)
+        .def("findNode", &TreePyManager::findNode)
+        .def("removeNode", &TreePyManager::removeNode)
+        .def("manualAdd", &TreePyManager::manualAdd)
     ;
 }
