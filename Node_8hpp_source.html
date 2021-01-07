@@ -79,39 +79,52 @@ $(function() {
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classNode.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classNode.html">Node</a> : <span class="keyword">public</span> std::enable_shared_from_this&lt;Node&gt;{</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    std::string name_;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    std::string description_;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    std::vector&lt;std::string&gt; aliases_;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    std::vector&lt;std::shared_ptr&lt;Node&gt;&gt; children_;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    std::shared_ptr&lt;Node&gt; parent_;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">void</span> setParent(std::shared_ptr&lt;Node&gt; parent);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classNode.html">Node</a>(std::string name, std::string description=<span class="stringliteral">&quot;&quot;</span>, std::vector&lt;std::string&gt; aliases = std::vector&lt;std::string&gt;());</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classNode.html">Node</a>();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="comment">// Add</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> addAlias(<span class="keyword">const</span> std::string &amp;alias);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> addChild(<span class="keyword">const</span> std::shared_ptr&lt;Node&gt;&amp; node);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">// Remove</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> removeAlias(<span class="keyword">const</span> std::string &amp;alias);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> removeChild(<span class="keyword">const</span> std::string &amp;node_name);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">// Get</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">const</span> std::string &amp;getName() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">const</span> std::string &amp;getDescription() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;getAliases() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">const</span> std::vector&lt;std::shared_ptr&lt;Node&gt;&gt; &amp;getChildren() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">const</span> std::shared_ptr&lt;Node&gt; &amp;getParent() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment">// Set</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> setName(<span class="keyword">const</span> std::string &amp;name);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> setDescription(<span class="keyword">const</span> std::string &amp;description);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> setAliases(<span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;aliases);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;};</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif //METHOD_DEVELOPMENT_VISUALIZER_BACKEND_NODE_HPP</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classNode.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classNode.html">Node</a> : <span class="keyword">public</span> std::enable_shared_from_this&lt;Node&gt;{</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    std::string name_;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    std::string description_;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    std::vector&lt;std::string&gt; aliases_;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    std::vector&lt;std::shared_ptr&lt;Node&gt;&gt; children_;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    std::shared_ptr&lt;Node&gt; parent_;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> setParent(std::shared_ptr&lt;Node&gt; parent);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classNode.html#a8b7c1c0f9f29e8617224a46271d11bd7">Node</a>(std::string name, std::string description=<span class="stringliteral">&quot;&quot;</span>, std::vector&lt;std::string&gt; aliases = std::vector&lt;std::string&gt;());</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classNode.html">Node</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">// Add</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNode.html#ab81c7a276ccb38c15bea38d7fd4ddb51">addAlias</a>(<span class="keyword">const</span> std::string &amp;alias);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNode.html#a360e2e5e3f748bd13cc8c73c8c0b0ace">addChild</a>(<span class="keyword">const</span> std::shared_ptr&lt;Node&gt;&amp; node);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">// Remove</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNode.html#a51f43cb1af074900454a85de4d2ccc0b">removeAlias</a>(<span class="keyword">const</span> std::string &amp;alias);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNode.html#ae8ddbb9e189f90d0f19ea08f5ba00ec9">removeChild</a>(<span class="keyword">const</span> std::string &amp;node_name);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">// Get</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">const</span> std::string &amp;<a class="code" href="classNode.html#a2ddaa1e6fdada0bec680128d9e732162">getName</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">const</span> std::string &amp;<a class="code" href="classNode.html#a12d2432cd31bf3e1bcf19a115aae6f00">getDescription</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;<a class="code" href="classNode.html#afecbaa9bc27769025d96778cd1cfa4a5">getAliases</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">const</span> std::vector&lt;std::shared_ptr&lt;Node&gt;&gt; &amp;<a class="code" href="classNode.html#a21bab5bbd6827f6c186a043caaee881b">getChildren</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">const</span> std::shared_ptr&lt;Node&gt; &amp;<a class="code" href="classNode.html#aaeacd8e3d67a4622e508db17306a6c45">getParent</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">// Set</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNode.html#a519730c66b26e65c6539a908e6905edc">setName</a>(<span class="keyword">const</span> std::string &amp;name);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNode.html#ab797567312f7881a42c24147e12429c2">setDescription</a>(<span class="keyword">const</span> std::string &amp;description);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNode.html#a009c1825348c10399320d6524488db53">setAliases</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;aliases);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;};</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif //METHOD_DEVELOPMENT_VISUALIZER_BACKEND_NODE_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassNode_html"><div class="ttname"><a href="classNode.html">Node</a></div><div class="ttdef"><b>Definition:</b> Node.hpp:11</div></div>
+<div class="ttc" id="aclassNode_html_ab797567312f7881a42c24147e12429c2"><div class="ttname"><a href="classNode.html#ab797567312f7881a42c24147e12429c2">Node::setDescription</a></div><div class="ttdeci">void setDescription(const std::string &amp;description)</div><div class="ttdef"><b>Definition:</b> Node.cpp:22</div></div>
+<div class="ttc" id="aclassNode_html_a8b7c1c0f9f29e8617224a46271d11bd7"><div class="ttname"><a href="classNode.html#a8b7c1c0f9f29e8617224a46271d11bd7">Node::Node</a></div><div class="ttdeci">Node(std::string name, std::string description=&quot;&quot;, std::vector&lt; std::string &gt; aliases=std::vector&lt; std::string &gt;())</div><div class="ttdef"><b>Definition:</b> Node.cpp:11</div></div>
+<div class="ttc" id="aclassNode_html_a009c1825348c10399320d6524488db53"><div class="ttname"><a href="classNode.html#a009c1825348c10399320d6524488db53">Node::setAliases</a></div><div class="ttdeci">void setAliases(const std::vector&lt; std::string &gt; &amp;aliases)</div><div class="ttdef"><b>Definition:</b> Node.cpp:28</div></div>
+<div class="ttc" id="aclassNode_html_a2ddaa1e6fdada0bec680128d9e732162"><div class="ttname"><a href="classNode.html#a2ddaa1e6fdada0bec680128d9e732162">Node::getName</a></div><div class="ttdeci">const std::string &amp; getName() const</div><div class="ttdoc">Gets the name_ attribute.</div><div class="ttdef"><b>Definition:</b> Node.cpp:39</div></div>
+<div class="ttc" id="aclassNode_html_a21bab5bbd6827f6c186a043caaee881b"><div class="ttname"><a href="classNode.html#a21bab5bbd6827f6c186a043caaee881b">Node::getChildren</a></div><div class="ttdeci">const std::vector&lt; std::shared_ptr&lt; Node &gt; &gt; &amp; getChildren() const</div><div class="ttdoc">Gets the children_ attribute.</div><div class="ttdef"><b>Definition:</b> Node.cpp:54</div></div>
+<div class="ttc" id="aclassNode_html_afecbaa9bc27769025d96778cd1cfa4a5"><div class="ttname"><a href="classNode.html#afecbaa9bc27769025d96778cd1cfa4a5">Node::getAliases</a></div><div class="ttdeci">const std::vector&lt; std::string &gt; &amp; getAliases() const</div><div class="ttdoc">Gets the aliases_ attribute.</div><div class="ttdef"><b>Definition:</b> Node.cpp:49</div></div>
+<div class="ttc" id="aclassNode_html_aaeacd8e3d67a4622e508db17306a6c45"><div class="ttname"><a href="classNode.html#aaeacd8e3d67a4622e508db17306a6c45">Node::getParent</a></div><div class="ttdeci">const std::shared_ptr&lt; Node &gt; &amp; getParent() const</div><div class="ttdoc">Gets the parent_ attribute.</div><div class="ttdef"><b>Definition:</b> Node.cpp:59</div></div>
+<div class="ttc" id="aclassNode_html_a519730c66b26e65c6539a908e6905edc"><div class="ttname"><a href="classNode.html#a519730c66b26e65c6539a908e6905edc">Node::setName</a></div><div class="ttdeci">void setName(const std::string &amp;name)</div><div class="ttdef"><b>Definition:</b> Node.cpp:16</div></div>
+<div class="ttc" id="aclassNode_html_ab81c7a276ccb38c15bea38d7fd4ddb51"><div class="ttname"><a href="classNode.html#ab81c7a276ccb38c15bea38d7fd4ddb51">Node::addAlias</a></div><div class="ttdeci">void addAlias(const std::string &amp;alias)</div><div class="ttdef"><b>Definition:</b> Node.cpp:65</div></div>
+<div class="ttc" id="aclassNode_html"><div class="ttname"><a href="classNode.html">Node</a></div><div class="ttdef"><b>Definition:</b> Node.hpp:13</div></div>
+<div class="ttc" id="aclassNode_html_a51f43cb1af074900454a85de4d2ccc0b"><div class="ttname"><a href="classNode.html#a51f43cb1af074900454a85de4d2ccc0b">Node::removeAlias</a></div><div class="ttdeci">void removeAlias(const std::string &amp;alias)</div><div class="ttdef"><b>Definition:</b> Node.cpp:71</div></div>
+<div class="ttc" id="aclassNode_html_a360e2e5e3f748bd13cc8c73c8c0b0ace"><div class="ttname"><a href="classNode.html#a360e2e5e3f748bd13cc8c73c8c0b0ace">Node::addChild</a></div><div class="ttdeci">void addChild(const std::shared_ptr&lt; Node &gt; &amp;node)</div><div class="ttdef"><b>Definition:</b> Node.cpp:79</div></div>
+<div class="ttc" id="aclassNode_html_ae8ddbb9e189f90d0f19ea08f5ba00ec9"><div class="ttname"><a href="classNode.html#ae8ddbb9e189f90d0f19ea08f5ba00ec9">Node::removeChild</a></div><div class="ttdeci">void removeChild(const std::string &amp;node_name)</div><div class="ttdef"><b>Definition:</b> Node.cpp:86</div></div>
+<div class="ttc" id="aclassNode_html_a12d2432cd31bf3e1bcf19a115aae6f00"><div class="ttname"><a href="classNode.html#a12d2432cd31bf3e1bcf19a115aae6f00">Node::getDescription</a></div><div class="ttdeci">const std::string &amp; getDescription() const</div><div class="ttdoc">Gets the description_ attribute.</div><div class="ttdef"><b>Definition:</b> Node.cpp:44</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

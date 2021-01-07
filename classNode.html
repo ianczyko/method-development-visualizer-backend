@@ -68,6 +68,8 @@ $(function() {
 <div class="title">Node Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="Node_8hpp_source.html">Node.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Node:</div>
 <div class="dyncontent">
@@ -89,46 +91,265 @@ Collaboration diagram for Node:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8b7c1c0f9f29e8617224a46271d11bd7"><td class="memItemLeft" align="right" valign="top"><a id="a8b7c1c0f9f29e8617224a46271d11bd7"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Node</b> (std::string name, std::string description=&quot;&quot;, std::vector&lt; std::string &gt; aliases=std::vector&lt; std::string &gt;())</td></tr>
+<tr class="memitem:a8b7c1c0f9f29e8617224a46271d11bd7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a8b7c1c0f9f29e8617224a46271d11bd7">Node</a> (std::string name, std::string description=&quot;&quot;, std::vector&lt; std::string &gt; aliases=std::vector&lt; std::string &gt;())</td></tr>
 <tr class="separator:a8b7c1c0f9f29e8617224a46271d11bd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab81c7a276ccb38c15bea38d7fd4ddb51"><td class="memItemLeft" align="right" valign="top"><a id="ab81c7a276ccb38c15bea38d7fd4ddb51"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addAlias</b> (const std::string &amp;alias)</td></tr>
+<tr class="memitem:ab81c7a276ccb38c15bea38d7fd4ddb51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#ab81c7a276ccb38c15bea38d7fd4ddb51">addAlias</a> (const std::string &amp;alias)</td></tr>
 <tr class="separator:ab81c7a276ccb38c15bea38d7fd4ddb51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a360e2e5e3f748bd13cc8c73c8c0b0ace"><td class="memItemLeft" align="right" valign="top"><a id="a360e2e5e3f748bd13cc8c73c8c0b0ace"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addChild</b> (const std::shared_ptr&lt; <a class="el" href="classNode.html">Node</a> &gt; &amp;node)</td></tr>
+<tr class="memitem:a360e2e5e3f748bd13cc8c73c8c0b0ace"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a360e2e5e3f748bd13cc8c73c8c0b0ace">addChild</a> (const std::shared_ptr&lt; <a class="el" href="classNode.html">Node</a> &gt; &amp;node)</td></tr>
 <tr class="separator:a360e2e5e3f748bd13cc8c73c8c0b0ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51f43cb1af074900454a85de4d2ccc0b"><td class="memItemLeft" align="right" valign="top"><a id="a51f43cb1af074900454a85de4d2ccc0b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>removeAlias</b> (const std::string &amp;alias)</td></tr>
+<tr class="memitem:a51f43cb1af074900454a85de4d2ccc0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a51f43cb1af074900454a85de4d2ccc0b">removeAlias</a> (const std::string &amp;alias)</td></tr>
 <tr class="separator:a51f43cb1af074900454a85de4d2ccc0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8ddbb9e189f90d0f19ea08f5ba00ec9"><td class="memItemLeft" align="right" valign="top"><a id="ae8ddbb9e189f90d0f19ea08f5ba00ec9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>removeChild</b> (const std::string &amp;node_name)</td></tr>
+<tr class="memitem:ae8ddbb9e189f90d0f19ea08f5ba00ec9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#ae8ddbb9e189f90d0f19ea08f5ba00ec9">removeChild</a> (const std::string &amp;node_name)</td></tr>
 <tr class="separator:ae8ddbb9e189f90d0f19ea08f5ba00ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ddaa1e6fdada0bec680128d9e732162"><td class="memItemLeft" align="right" valign="top"><a id="a2ddaa1e6fdada0bec680128d9e732162"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getName</b> () const</td></tr>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a2ddaa1e6fdada0bec680128d9e732162">getName</a> () const</td></tr>
+<tr class="memdesc:a2ddaa1e6fdada0bec680128d9e732162"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the name_ attribute. <br /></td></tr>
 <tr class="separator:a2ddaa1e6fdada0bec680128d9e732162"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12d2432cd31bf3e1bcf19a115aae6f00"><td class="memItemLeft" align="right" valign="top"><a id="a12d2432cd31bf3e1bcf19a115aae6f00"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getDescription</b> () const</td></tr>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a12d2432cd31bf3e1bcf19a115aae6f00">getDescription</a> () const</td></tr>
+<tr class="memdesc:a12d2432cd31bf3e1bcf19a115aae6f00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the description_ attribute. <br /></td></tr>
 <tr class="separator:a12d2432cd31bf3e1bcf19a115aae6f00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afecbaa9bc27769025d96778cd1cfa4a5"><td class="memItemLeft" align="right" valign="top"><a id="afecbaa9bc27769025d96778cd1cfa4a5"></a>
-const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getAliases</b> () const</td></tr>
+const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#afecbaa9bc27769025d96778cd1cfa4a5">getAliases</a> () const</td></tr>
+<tr class="memdesc:afecbaa9bc27769025d96778cd1cfa4a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the aliases_ attribute. <br /></td></tr>
 <tr class="separator:afecbaa9bc27769025d96778cd1cfa4a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21bab5bbd6827f6c186a043caaee881b"><td class="memItemLeft" align="right" valign="top"><a id="a21bab5bbd6827f6c186a043caaee881b"></a>
-const std::vector&lt; std::shared_ptr&lt; <a class="el" href="classNode.html">Node</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getChildren</b> () const</td></tr>
+const std::vector&lt; std::shared_ptr&lt; <a class="el" href="classNode.html">Node</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a21bab5bbd6827f6c186a043caaee881b">getChildren</a> () const</td></tr>
+<tr class="memdesc:a21bab5bbd6827f6c186a043caaee881b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the children_ attribute. <br /></td></tr>
 <tr class="separator:a21bab5bbd6827f6c186a043caaee881b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaeacd8e3d67a4622e508db17306a6c45"><td class="memItemLeft" align="right" valign="top"><a id="aaeacd8e3d67a4622e508db17306a6c45"></a>
-const std::shared_ptr&lt; <a class="el" href="classNode.html">Node</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getParent</b> () const</td></tr>
+const std::shared_ptr&lt; <a class="el" href="classNode.html">Node</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#aaeacd8e3d67a4622e508db17306a6c45">getParent</a> () const</td></tr>
+<tr class="memdesc:aaeacd8e3d67a4622e508db17306a6c45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the parent_ attribute. <br /></td></tr>
 <tr class="separator:aaeacd8e3d67a4622e508db17306a6c45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a519730c66b26e65c6539a908e6905edc"><td class="memItemLeft" align="right" valign="top"><a id="a519730c66b26e65c6539a908e6905edc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setName</b> (const std::string &amp;name)</td></tr>
+<tr class="memitem:a519730c66b26e65c6539a908e6905edc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a519730c66b26e65c6539a908e6905edc">setName</a> (const std::string &amp;name)</td></tr>
 <tr class="separator:a519730c66b26e65c6539a908e6905edc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab797567312f7881a42c24147e12429c2"><td class="memItemLeft" align="right" valign="top"><a id="ab797567312f7881a42c24147e12429c2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setDescription</b> (const std::string &amp;description)</td></tr>
+<tr class="memitem:ab797567312f7881a42c24147e12429c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#ab797567312f7881a42c24147e12429c2">setDescription</a> (const std::string &amp;description)</td></tr>
 <tr class="separator:ab797567312f7881a42c24147e12429c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a009c1825348c10399320d6524488db53"><td class="memItemLeft" align="right" valign="top"><a id="a009c1825348c10399320d6524488db53"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setAliases</b> (const std::vector&lt; std::string &gt; &amp;aliases)</td></tr>
+<tr class="memitem:a009c1825348c10399320d6524488db53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a009c1825348c10399320d6524488db53">setAliases</a> (const std::vector&lt; std::string &gt; &amp;aliases)</td></tr>
 <tr class="separator:a009c1825348c10399320d6524488db53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classNode.html">Node</a> class that models a single node in a <a class="el" href="classTree.html">Tree</a>. </p><dl class="section author"><dt>Author</dt><dd>Igor Anczykowski </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8b7c1c0f9f29e8617224a46271d11bd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b7c1c0f9f29e8617224a46271d11bd7">&#9670;&nbsp;</a></span>Node()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Node::Node </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>description</em> = <code>&quot;&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt;&#160;</td>
+          <td class="paramname"><em>aliases</em> = <code>std::vector&lt;std::string&gt;()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Constructor that initializes all the private attributes. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Name of the node to create (used internally as an identifier) </td></tr>
+    <tr><td class="paramname">description</td><td>Description of the node. </td></tr>
+    <tr><td class="paramname">aliases</td><td>A list of aliases of the node. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab81c7a276ccb38c15bea38d7fd4ddb51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab81c7a276ccb38c15bea38d7fd4ddb51">&#9670;&nbsp;</a></span>addAlias()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Node::addAlias </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>alias</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Appends the list of aliases (aliases_). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">alias</td><td>Alias to append the aliases_ list. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a360e2e5e3f748bd13cc8c73c8c0b0ace"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a360e2e5e3f748bd13cc8c73c8c0b0ace">&#9670;&nbsp;</a></span>addChild()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Node::addChild </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classNode.html">Node</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Appends the list of children (children_). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td><a class="el" href="classNode.html">Node</a> to append the children_ list. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a51f43cb1af074900454a85de4d2ccc0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51f43cb1af074900454a85de4d2ccc0b">&#9670;&nbsp;</a></span>removeAlias()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Node::removeAlias </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>alias</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Removes an element from the list of aliases (aliases_). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">alias</td><td>Alias to remove from the aliases_ list. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae8ddbb9e189f90d0f19ea08f5ba00ec9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8ddbb9e189f90d0f19ea08f5ba00ec9">&#9670;&nbsp;</a></span>removeChild()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Node::removeChild </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>nodeName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Removes a node from the list of children (children_). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nodeName</td><td><a class="el" href="classNode.html">Node</a> to remove from the children_ list. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a009c1825348c10399320d6524488db53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a009c1825348c10399320d6524488db53">&#9670;&nbsp;</a></span>setAliases()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Node::setAliases </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>aliases</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the aliases_ attribute. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">aliases</td><td>List of aliases to set for the node. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab797567312f7881a42c24147e12429c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab797567312f7881a42c24147e12429c2">&#9670;&nbsp;</a></span>setDescription()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Node::setDescription </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>description</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the description_ attribute. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">description</td><td>Description to set for the node. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a519730c66b26e65c6539a908e6905edc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a519730c66b26e65c6539a908e6905edc">&#9670;&nbsp;</a></span>setName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Node::setName </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the name_ attribute. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Name to set for the node. (used internally as an identifier) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>methodDevelopment/src/<a class="el" href="Node_8hpp_source.html">Node.hpp</a></li>
 <li>methodDevelopment/src/Node.cpp</li>
