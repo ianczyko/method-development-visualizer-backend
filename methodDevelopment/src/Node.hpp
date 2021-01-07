@@ -8,6 +8,8 @@
 #include <vector>
 #include <memory>
 
+/// Node class that models a single node in a Tree.
+/// @author Igor Anczykowski
 class Node : public std::enable_shared_from_this<Node>{
     std::string name_;
     std::string description_;

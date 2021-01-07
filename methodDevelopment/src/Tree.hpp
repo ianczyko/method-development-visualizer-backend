@@ -5,6 +5,8 @@
 
 #include "Node.hpp"
 
+/// Tree class that implements required Tree algorithms on the Tree structure.
+/// @author Igor Anczykowski
 class Tree {
     std::shared_ptr<Node> root_node_;
 public:

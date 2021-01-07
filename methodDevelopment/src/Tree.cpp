@@ -3,13 +3,23 @@
 #include "Tree.hpp"
 #include <queue>
 
+/// Constructor that initializes all the private attributes.
+/// @param root_node Root node of the initialized tree.
 Tree::Tree(const std::shared_ptr<Node> &root_node) : root_node_(root_node) {} //NOLINT
 std::shared_ptr<Node> Tree::getRootNode() const {
     return this->root_node_;
 }
+
+/// Sets the root_node_ attribute.
+/// @param root_node Root node of the initialized tree.
 void Tree::setRootNode(const std::shared_ptr<Node> &root_node) {
     this->root_node_ = root_node;
 }
+
+/// Finds the node in a tree using its identifier (node_name).
+///
+/// This algorithm uses a Breadth-first search algorithm.
+/// @param node_name Name of the Node to be found.
 std::shared_ptr<Node> Tree::findNode(const std::string &node_name) const {
     std::queue<std::shared_ptr<Node>> q;
     q.push(this->root_node_);
@@ -26,12 +36,21 @@ std::shared_ptr<Node> Tree::findNode(const std::string &node_name) const {
     }
     return nullptr;
 }
+
+/// Removes the node from a tree using its identifier (node_name).
+///
+/// This requires the findNode() method.
+/// @param node_name Name of the Node to be removed.
 void Tree::removeNode(const std::string &node_name) const {
     auto parent_of_searched = this->findNode(node_name)->getParent();
     if(parent_of_searched != nullptr){
         parent_of_searched->removeChild(node_name);
     }
 }
+
+/// Returns a list of Nodes from the tree.
+///
+/// The Nodes are ordered the same to the Breadth-first search algorithm.
 std::vector<std::shared_ptr<Node>> Tree::getAllNodes() {
     std::vector<std::shared_ptr<Node>> all_nodes;
     std::queue<std::shared_ptr<Node>> q;
@@ -47,6 +66,12 @@ std::vector<std::shared_ptr<Node>> Tree::getAllNodes() {
     }
     return all_nodes;
 }
+
+/// Adds a Node to a tree.
+///
+/// This requires the findNode() method. if parent_name is empty, then it sets node as root.
+/// @param node Node object to be added.
+/// @param parent_name Name of the parent of the node to be added.
 void Tree::addNode(const std::shared_ptr<Node> &node, const std::string &parent_name) {
     if(parent_name.empty()){
         this->setRootNode(node);
