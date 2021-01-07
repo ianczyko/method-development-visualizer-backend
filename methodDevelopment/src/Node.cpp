@@ -69,7 +69,7 @@ void Node::addAlias(const std::string &alias) {
 /// Removes an element from the list of aliases (aliases_).
 /// @param alias Alias to remove from the aliases_ list.
 void Node::removeAlias(const std::string &alias) {
-    for(unsigned i=0; i<this->aliases_.size(); i++){
+    for(unsigned i=0; i<this->aliases_.size(); ++i){
         if(this->aliases_[i] == alias) this->aliases_.erase(this->aliases_.begin() + i);
     }
 }
@@ -84,7 +84,7 @@ void Node::addChild(const std::shared_ptr<Node>& node) {
 /// Removes a node from the list of children (children_).
 /// @param nodeName Node to remove from the children_ list.
 void Node::removeChild(const std::string &nodeName) {
-    for(unsigned i=0; i<this->children_.size(); i++){
+    for(unsigned i=0; i<this->children_.size(); ++i){
         if(this->children_[i]->getName() == nodeName) this->children_.erase(this->children_.begin() + i);
     }
 }
