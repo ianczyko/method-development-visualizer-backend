@@ -1,0 +1,2 @@
+ignore:
+  - "methodDevelopment/core_to_py_api.cpp"

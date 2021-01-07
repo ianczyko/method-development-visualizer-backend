@@ -8,12 +8,14 @@
 #include <vector>
 #include <memory>
 
+/// Node class that models a single node in a Tree.
+/// @author Igor Anczykowski
 class Node : public std::enable_shared_from_this<Node>{
-    std::string name;
-    std::string description;
-    std::vector<std::string> aliases;
-    std::vector<std::shared_ptr<Node>> children;
-    std::shared_ptr<Node> parent;
+    std::string name_;
+    std::string description_;
+    std::vector<std::string> aliases_;
+    std::vector<std::shared_ptr<Node>> children_;
+    std::shared_ptr<Node> parent_;
     void setParent(std::shared_ptr<Node> parent);
 public:
     explicit Node(std::string name, std::string description="", std::vector<std::string> aliases = std::vector<std::string>());
@@ -24,7 +26,7 @@ public:
     void addChild(const std::shared_ptr<Node>& node);
     // Remove
     void removeAlias(const std::string &alias);
-    void removeChild(const std::string &nodeName);
+    void removeChild(const std::string &node_name);
     // Get
     const std::string &getName() const;
     const std::string &getDescription() const;
