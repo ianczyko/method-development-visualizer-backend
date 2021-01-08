@@ -82,9 +82,9 @@ void Tree::addNode(const std::shared_ptr<Node> &node, const std::string &parent_
     parent->addChild(node);
 }
 
-/// Adds a Node to a tree automatically without considering its parent_name_ attribute.
+/// Adds a Node to a tree automatically based on Node::rateNameSimilarity() rating.
 ///
-/// todo: more info.
+/// Additionally, if the rating is the same, it picks the node with a shorter name.
 /// @param node Node object to be added.
 void Tree::addNodeAuto(const std::shared_ptr<Node> &node) {
     const auto & nodes = this->getAllNodes();

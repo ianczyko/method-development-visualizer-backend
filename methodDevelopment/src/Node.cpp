@@ -88,6 +88,9 @@ void Node::removeChild(const std::string &nodeName) {
         if(this->children_[i]->getName() == nodeName) this->children_.erase(this->children_.begin() + i);
     }
 }
+
+/// Rates a node based on their name similarity (from the end).
+/// @param other_node Node that is compared to (this) node.
 int Node::rateNameSimilarity(const std::shared_ptr<Node> &other_node) const {
     std::string parent_name = this->getNameCleaned();
     std::string child_name = other_node->getNameCleaned();
@@ -100,6 +103,8 @@ int Node::rateNameSimilarity(const std::shared_ptr<Node> &other_node) const {
     return min_len;
 
 }
+
+/// Removes special characters and changes all left characters to lowercase from Node's name.
 std::string Node::getNameCleaned() const {
     std::string name_cleaned = this->getName();
     // remove special characters
