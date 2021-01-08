@@ -16,6 +16,7 @@ public:
     void removeNode(const std::string &node_name) const;
     void setRootNode(const std::shared_ptr<Node> &root_node);
     void addNode(const std::shared_ptr<Node> &node, const std::string &parent_name);
+    void addNodeAuto(const std::shared_ptr<Node> &node);
     std::vector<std::shared_ptr<Node>> getAllNodes();
 };
 

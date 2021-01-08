@@ -87,4 +87,15 @@ def add_node_manual(request):
     return HttpResponse('')
 
 def add_node_auto(request):
-    pass
+    if request.method != "POST":
+        return HttpResponse('') # TODO: return error response
+    node_to_add = json.loads(request.body.decode('utf-8'))
+    py_node = method_development.NodePy(
+        node_to_add['name'],
+        node_to_add['parent'],
+        node_to_add['description'],
+        node_to_add['aliases']
+    )
+    tree.autoAdd(py_node)
+    save_tree(tree)
+    return HttpResponse('')

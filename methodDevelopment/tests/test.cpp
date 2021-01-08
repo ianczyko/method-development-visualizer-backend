@@ -39,10 +39,6 @@ BOOST_AUTO_TEST_SUITE( Node_suite ) //NOLINT
         aliases.emplace_back("shade");
         aliases.emplace_back("Shade");
         Node node("SHADE", "Description...", aliases);
-        BOOST_REQUIRE(node.getName() == "SHADE");
-        BOOST_REQUIRE(node.getDescription() == "Description...");
-        BOOST_REQUIRE(node.getAliases().at(0) == "shade");
-        BOOST_REQUIRE(node.getAliases().at(1) == "Shade");
         aliases.emplace_back("shaDE");
         node.setAliases(aliases);
         node.setDescription("Description2");
@@ -52,6 +48,36 @@ BOOST_AUTO_TEST_SUITE( Node_suite ) //NOLINT
         BOOST_REQUIRE(node.getAliases().at(0) == "shade");
         BOOST_REQUIRE(node.getAliases().at(1) == "Shade");
         BOOST_REQUIRE(node.getAliases().at(2) == "shaDE");
+    }
+    BOOST_AUTO_TEST_CASE( Node_name_cleaning_case ) { //NOLINT
+        Node node("ShadE");
+        BOOST_REQUIRE(node.getName() == "ShadE");
+        BOOST_REQUIRE(node.getNameCleaned() == "shade");
+    }
+    BOOST_AUTO_TEST_CASE( Node_name_cleaning_special ) { //NOLINT
+        Node node("aBc d-E.");
+        BOOST_REQUIRE(node.getName() == "aBc d-E.");
+        BOOST_REQUIRE(node.getNameCleaned() == "abcde");
+    }
+    BOOST_AUTO_TEST_CASE( Node_rate_name_similarity_normal ) { //NOLINT
+        auto node_parent = std::make_shared<Node>("DE");
+        auto node_child = std::make_shared<Node>("SHADE");
+        BOOST_REQUIRE(node_parent->rateNameSimilarity(node_child) == 2);
+    }
+    BOOST_AUTO_TEST_CASE( Node_rate_name_similarity_case ) { //NOLINT
+        auto node_parent = std::make_shared<Node>("DE");
+        auto node_child = std::make_shared<Node>("Shade");
+        BOOST_REQUIRE(node_parent->rateNameSimilarity(node_child) == 2);
+    }
+    BOOST_AUTO_TEST_CASE( Node_rate_name_similarity_special ) { //NOLINT
+        auto node_parent = std::make_shared<Node>("DE");
+        auto node_child = std::make_shared<Node>("sha-de");
+        BOOST_REQUIRE(node_parent->rateNameSimilarity(node_child) == 2);
+    }
+    BOOST_AUTO_TEST_CASE( Node_rate_name_similarity_no_similarity ) { //NOLINT
+        auto node_parent = std::make_shared<Node>("DE");
+        auto node_child = std::make_shared<Node>("foo");
+        BOOST_REQUIRE(node_parent->rateNameSimilarity(node_child) == 0);
     }
     BOOST_AUTO_TEST_CASE( Node_add_and_remove_alias ) { //NOLINT
         std::vector<std::string> aliases;
@@ -226,5 +252,20 @@ BOOST_AUTO_TEST_SUITE( Tree_suite ) //NOLINT
         BOOST_REQUIRE(root->getChildren()[0]->getName() == "node_1");
         BOOST_CHECK(root->getChildren()[0]->getChildren()[0]->getName() == "node_1_1");
         BOOST_CHECK(root->getChildren()[0]->getChildren()[1]->getName() == "node_1_2");
+    }
+    BOOST_AUTO_TEST_CASE( Tree_add_node_auto ) { //NOLINT
+        auto node_de = std::make_shared<Node>("DE");
+        auto node_shade = std::make_shared<Node>("SHADE");
+        auto node_ilshade = std::make_shared<Node>("ILSHADE");
+        auto node_xshade = std::make_shared<Node>("XSHADE");
+        Tree tree(node_de);
+        tree.addNodeAuto(node_shade);
+        tree.addNodeAuto(node_ilshade);
+        tree.addNodeAuto(node_xshade);
+        auto root = tree.getRootNode();
+        BOOST_CHECK(root->getChildren()[0]->getName() == "SHADE");
+        BOOST_CHECK(root->getChildren()[0]->getChildren()[0]->getName() == "ILSHADE");
+        BOOST_CHECK(root->getChildren()[0]->getChildren()[0]->getParent()->getName() == "SHADE");
+        BOOST_CHECK(root->getChildren()[0]->getChildren()[1]->getName() == "XSHADE");
     }
 BOOST_AUTO_TEST_SUITE_END() //NOLINT

@@ -77,6 +77,9 @@ public:
     void manualAdd(NodePy node_py){
         this->tree_.addNode(node_py.toNode(), node_py.getParentName());
     }
+    void autoAdd(NodePy node_py){
+        this->tree_.addNodeAuto(node_py.toNode());
+    }
     void removeNode(const std::string& name){
         this->tree_.removeNode(name);
     }
@@ -96,5 +99,6 @@ BOOST_PYTHON_MODULE(method_development)
         .def("findNode", &TreePyManager::findNode)
         .def("removeNode", &TreePyManager::removeNode)
         .def("manualAdd", &TreePyManager::manualAdd)
+        .def("autoAdd", &TreePyManager::autoAdd)
     ;
 }
