@@ -67,14 +67,13 @@ def node_at(request, name):
         response['Access-Control-Allow-Origin'] = '*'
         return response
     if request.method == "DELETE":
-        # TODO: return error response if not found
         tree.removeNode(name)
         save_tree(tree)
         return HttpResponse('') 
 
 def add_node_manual(request):
     if request.method != "POST":
-        return HttpResponse('') # TODO: return error response
+        return HttpResponse('')
     node_to_add = json.loads(request.body.decode('utf-8'))
     py_node = method_development.NodePy(
         node_to_add['name'],
@@ -88,7 +87,7 @@ def add_node_manual(request):
 
 def add_node_auto(request):
     if request.method != "POST":
-        return HttpResponse('') # TODO: return error response
+        return HttpResponse('')
     node_to_add = json.loads(request.body.decode('utf-8'))
     py_node = method_development.NodePy(
         node_to_add['name'],
