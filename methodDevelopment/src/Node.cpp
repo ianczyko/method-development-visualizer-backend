@@ -1,8 +1,8 @@
 //Author: Anczykowski Igor
 
+#include <algorithm>
 #include "Node.hpp"
 
-#include <utility>
 
 /// Constructor that initializes all the private attributes.
 /// @param name Name of the node to create (used internally as an identifier)
@@ -87,6 +87,31 @@ void Node::removeChild(const std::string &nodeName) {
     for(unsigned i=0; i<this->children_.size(); ++i){
         if(this->children_[i]->getName() == nodeName) this->children_.erase(this->children_.begin() + i);
     }
+}
+
+/// Rates a node based on their name similarity (from the end).
+/// @param other_node Node that is compared to (this) node.
+int Node::rateNameSimilarity(const std::shared_ptr<Node> &other_node) const {
+    std::string parent_name = this->getNameCleaned();
+    std::string child_name = other_node->getNameCleaned();
+    std::reverse(parent_name.begin(), parent_name.end());
+    std::reverse(child_name.begin(), child_name.end());
+    int min_len = std::min(parent_name.length(), child_name.length());
+    for(int i=0; i<min_len; ++i){
+        if(parent_name[i] != child_name[i]) return i;
+    }
+    return min_len;
+
+}
+
+/// Removes special characters and changes all left characters to lowercase from Node's name.
+std::string Node::getNameCleaned() const {
+    std::string name_cleaned = this->getName();
+    // remove special characters
+    name_cleaned.erase(std::remove_if(name_cleaned.begin(), name_cleaned.end(), [](char c) { return !std::isalnum(c); }), name_cleaned.end());
+    // turn to lower case
+    std::transform(name_cleaned.begin(), name_cleaned.end(), name_cleaned.begin(), ::tolower);
+    return name_cleaned;
 }
 Node::~Node() = default;
 

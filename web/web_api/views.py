@@ -27,6 +27,19 @@ def tree_setup(tree):
 tree = method_development.TreePyManager()
 tree_setup(tree)
 
+def save_tree(tree):
+    Node.objects.all().delete()
+    Alias.objects.all().delete()
+    for node in tree.getTree():
+        name = node.getName()
+        Node(
+            name=name,
+            description=node.getDescription(),
+            parent=node.getParentName()
+        ).save()
+        for alias in node.getAliases():
+            Alias(alias=alias, origin_name=name).save()
+
 def graph(request):
     nodes_dict = {
         'nodes' : [
@@ -34,7 +47,7 @@ def graph(request):
                 'name':node.getName(),
                 'description':node.getDescription(),
                 'parent':node.getParentName(),
-                'alises':node.getAliases()
+                'aliases':node.getAliases()
             } for node in tree.getTree()
         ]
     }
@@ -49,18 +62,18 @@ def node_at(request, name):
             'name':requesed_node.getName(),
             'description':requesed_node.getDescription(),
             'parent':requesed_node.getParentName(),
-            'alises':requesed_node.getAliases()
+            'aliases':requesed_node.getAliases()
         })
         response['Access-Control-Allow-Origin'] = '*'
         return response
     if request.method == "DELETE":
-        # TODO: return error response if not found
         tree.removeNode(name)
+        save_tree(tree)
         return HttpResponse('') 
 
 def add_node_manual(request):
     if request.method != "POST":
-        return HttpResponse('') # TODO: return error response
+        return HttpResponse('')
     node_to_add = json.loads(request.body.decode('utf-8'))
     py_node = method_development.NodePy(
         node_to_add['name'],
@@ -69,7 +82,19 @@ def add_node_manual(request):
         node_to_add['aliases']
     )
     tree.manualAdd(py_node)
+    save_tree(tree)
     return HttpResponse('')
 
 def add_node_auto(request):
-    pass
+    if request.method != "POST":
+        return HttpResponse('')
+    node_to_add = json.loads(request.body.decode('utf-8'))
+    py_node = method_development.NodePy(
+        node_to_add['name'],
+        node_to_add['parent'],
+        node_to_add['description'],
+        node_to_add['aliases']
+    )
+    tree.autoAdd(py_node)
+    save_tree(tree)
+    return HttpResponse('')

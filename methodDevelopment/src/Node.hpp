@@ -16,10 +16,10 @@ class Node : public std::enable_shared_from_this<Node>{
     std::vector<std::string> aliases_;
     std::vector<std::shared_ptr<Node>> children_;
     std::shared_ptr<Node> parent_;
-    void setParent(std::shared_ptr<Node> parent);
 public:
     explicit Node(std::string name, std::string description="", std::vector<std::string> aliases = std::vector<std::string>());
     virtual ~Node();
+    int rateNameSimilarity(const std::shared_ptr<Node> &other_node) const;
 
     // Add
     void addAlias(const std::string &alias);
@@ -28,6 +28,7 @@ public:
     void removeAlias(const std::string &alias);
     void removeChild(const std::string &node_name);
     // Get
+    std::string getNameCleaned() const;
     const std::string &getName() const;
     const std::string &getDescription() const;
     const std::vector<std::string> &getAliases() const;
@@ -37,6 +38,7 @@ public:
     void setName(const std::string &name);
     void setDescription(const std::string &description);
     void setAliases(const std::vector<std::string> &aliases);
+    void setParent(std::shared_ptr<Node> parent);
 };
 
 

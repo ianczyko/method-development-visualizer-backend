@@ -2,6 +2,7 @@
 
 #include "Tree.hpp"
 #include <queue>
+#include <algorithm>
 
 /// Constructor that initializes all the private attributes.
 /// @param root_node Root node of the initialized tree.
@@ -78,5 +79,22 @@ void Tree::addNode(const std::shared_ptr<Node> &node, const std::string &parent_
         return;
     }
     auto parent = this->findNode(parent_name);
+    parent->addChild(node);
+}
+
+/// Adds a Node to a tree automatically based on Node::rateNameSimilarity() rating.
+///
+/// Additionally, if the rating is the same, it picks the node with a shorter name.
+/// @param node Node object to be added.
+void Tree::addNodeAuto(const std::shared_ptr<Node> &node) {
+    const auto & nodes = this->getAllNodes();
+    auto parent = *std::max_element( nodes.begin(), nodes.end(),
+        [&node](const std::shared_ptr<Node> &a, const std::shared_ptr<Node> &b) {
+            int a_score = a->rateNameSimilarity(node);
+            int b_score = b->rateNameSimilarity(node);
+            if(a_score == b_score) return a->getNameCleaned().length() > b->getNameCleaned().length();
+            return a_score < b_score;
+        });
+    node->setParent(parent);
     parent->addChild(node);
 }

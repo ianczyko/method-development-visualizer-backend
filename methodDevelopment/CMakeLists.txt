@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.1)
+cmake_policy(SET CMP0064 NEW)
 project(method-development-visualizer-backend)
 
 # Find python 3 and Boost (Boost.python)
@@ -16,7 +17,6 @@ foreach (_headerFile ${main_HEADERS})
 endforeach()
 list(REMOVE_DUPLICATES main_INCLUDE_DIRS)
 
-
 option(ENABLE_COVERAGE "Enable coverage reporting" FALSE)
 if(ENABLE_COVERAGE)
     add_compile_options(--coverage)
@@ -25,14 +25,9 @@ endif()
 
 add_compile_options(-Wall -std=c++14 -g)
 
-# Add a shared module - modules are intended to be imported at runtime.
-# - This is where you add the source files
 add_library(method_development MODULE core_to_py_api.cpp ${main_SOURCES})
-
-# Set up the libraries and header search paths for this target
 target_link_libraries(method_development ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
 target_include_directories(method_development PRIVATE ${PYTHON_INCLUDE_DIRS} ${main_INCLUDE_DIRS})
-
 
 option(TEST "Enable Boost.Test testing " FALSE)
 if(TEST)
