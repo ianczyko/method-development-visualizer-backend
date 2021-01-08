@@ -18,7 +18,6 @@ public:
     {};
     explicit NodePy(const std::shared_ptr<Node> &node)
     :   name_(node->getName()),
-        parent_name_(""),
         description_(node->getDescription()),
         aliases_()
     {

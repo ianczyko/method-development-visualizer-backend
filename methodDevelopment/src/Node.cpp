@@ -2,7 +2,6 @@
 
 #include "Node.hpp"
 
-#include <utility>
 
 /// Constructor that initializes all the private attributes.
 /// @param name Name of the node to create (used internally as an identifier)
