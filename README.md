@@ -9,11 +9,10 @@
 ## Opis projektu
 
 Projektem jest aplikacja pozwalająca na tworzenie grafu obrazującego rozwój algorytmów
-sztucznej inteligencji. Aplikacja powinna umożliwiać dodawanie/usuwanie ręczne elementów
-grafu oraz oferować sposób dodawania elementów automatycznie na podstawie ich nazwy
-np. ilSHADE powinien być podłączony do węzła SHADE. Interfejs aplikacji ma być graficzny
-(przeglądarkowy) a backend ma być zaimplementowany w C++ i dane ma przechowywać w
-bazie danych.
+sztucznej inteligencji. Aplikacja umożliwia dodawanie/usuwanie ręczne elementów
+grafu oraz oferuje sposób na dodawania elementów automatycznie na podstawie ich nazwy
+np. ilSHADE jest być podłączany do węzła SHADE. Interfejs aplikacji jest graficzny
+(przeglądarkowy) a logika operacji na grafie jest zaimplementowana w C++.
 
 ### Zależności
 
@@ -55,6 +54,8 @@ cd methodDevelopment ; mkdir build ; cd build ; cmake -D TEST:BOOL=TRUE .. ; mak
 ctest
 ```
 
+Istnieje jeszcze trzecia opcja generująca dodatkowo pliki coverage, wymaga ona: `cmake -D TEST:BOOL=TRUE -D ENABLE_COVERAGE:BOOL=TRUE ..`
+
 ### Przygotowanie wirtualnego środowiska Pythona
 
 W katalogu projektu:
@@ -67,15 +68,64 @@ pipenv shell
 python3 manage.py runserver
 ```
 
-Po wykonaniu powyższych kroków, powinny zacząć działać poniższe adresy:
+Po wykonaniu powyższych kroków, poniższy adres powinien zwrócić przykładową strukturę (GET):
 
 - [localhost:8000/api/graph/](http://localhost:8000/api/graph/)
-- [localhost:8000/api/cpp_hello_world/](http://localhost:8000/api/cpp_hello_world/)
 
-Na ten moment:
+Powinien on zwrócić:
 
-- **api/graph/** zwraca strukturę grafu aktualnie znajdującej się w bazie danych w formacie JSON.
-- **api/cpp_hello_world/** zwraca zawartość przykładowej funkcji w C++.
+```json
+{
+    "nodes": [
+        {
+            "name": "DE",
+            "description": "Opis algorytmu DE",
+            "parent": "",
+            "aliases": [
+                "de",
+                "De",
+                "De."
+            ]
+        },
+        {
+            "name": "SHADE",
+            "description": "Opis algorytmu SHADE",
+            "parent": "DE",
+            "aliases": [
+                "Shade",
+                "SHA-DE"
+            ]
+        },
+        {
+            "name": "JADE",
+            "description": "Opis algorytmu JADE",
+            "parent": "DE",
+            "aliases": []
+        }
+    ]
+}
+```
+
+Lista wszystkich endpointów:
+
+- **api/graph/** (GET) - zwraca strukturę grafu aktualnie znajdującej się w bazie danych w formacie JSON.
+- **api/node/\<str:name\>/**
+  - GET - zwraca informacje o podanym węźle w formacie JSON.
+  - DELETE - zwraca informacje o podanym węźle w formacie JSON.
+- **api/add/manual/** (POST) - Dodaję węzeł do struktury grafu.
+- **api/add/auto/** (POST) - Dodaję węzeł do struktury grafu automatycznie dedukując rodzica na podstawie nazwy.
+
+Reqesty do endpointów w api/add/ wymagają ustawionych nagłówków `X-CSRFToken` i `Cookie`.
+
+Format `body` dla reqestów do endpointów w api/add/
+```json
+{
+    "name": "JADE",
+    "description": "Opis algorytmu JADE",
+    "parent": "DE",
+    "aliases": ["jade", "ja-de"]
+}
+```
 
 Uwaga, część kodu źródłowego części Python została wygenerowana przez Django. Wykorzystane zostały komendy:
 
@@ -86,6 +136,6 @@ python3 manage.py startapp web_api
 
 ## Frontend
 
-Po skonfigurowaniu backendu, można uruchomić przeglądarkowy interfejs aplikacji, który pobiera dane z endpointu /api/graph/ i wyświetla je z pomocą biblioteki cytoscape.js. Po naciśnięciu na węzeł wyświetlają się jego szczegółowe informacje.
+Po skonfigurowaniu backendu, można uruchomić przeglądarkowy interfejs aplikacji, który pobiera dane z endpointów wyżej opisanego bacendu i wyświetla je z pomocą biblioteki cytoscape.js. Po naciśnięciu na węzeł wyświetlają się jego szczegółowe informacje.
 
-W tym momencie uruchomienie interfejsu wymaga otworzenia client/index.html w przeglądarce.
+Uruchomienie interfejsu wymaga otworzenia client/index.html w przeglądarce.
