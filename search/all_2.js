@@ -5,5 +5,6 @@ var searchData=
   ['getchildren_7',['getChildren',['../classNode.html#a21bab5bbd6827f6c186a043caaee881b',1,'Node']]],
   ['getdescription_8',['getDescription',['../classNode.html#a12d2432cd31bf3e1bcf19a115aae6f00',1,'Node']]],
   ['getname_9',['getName',['../classNode.html#a2ddaa1e6fdada0bec680128d9e732162',1,'Node']]],
-  ['getparent_10',['getParent',['../classNode.html#aaeacd8e3d67a4622e508db17306a6c45',1,'Node']]]
+  ['getnamecleaned_10',['getNameCleaned',['../classNode.html#a3e1306f3cc18b4b307ed9fde65d6dcb6',1,'Node']]],
+  ['getparent_11',['getParent',['../classNode.html#aaeacd8e3d67a4622e508db17306a6c45',1,'Node']]]
 ];

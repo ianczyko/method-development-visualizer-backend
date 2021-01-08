@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['getaliases_28',['getAliases',['../classNode.html#afecbaa9bc27769025d96778cd1cfa4a5',1,'Node']]],
-  ['getallnodes_29',['getAllNodes',['../classTree.html#ad73749aa839bb7fc6ed9bc3fa32221b1',1,'Tree']]],
-  ['getchildren_30',['getChildren',['../classNode.html#a21bab5bbd6827f6c186a043caaee881b',1,'Node']]],
-  ['getdescription_31',['getDescription',['../classNode.html#a12d2432cd31bf3e1bcf19a115aae6f00',1,'Node']]],
-  ['getname_32',['getName',['../classNode.html#a2ddaa1e6fdada0bec680128d9e732162',1,'Node']]],
-  ['getparent_33',['getParent',['../classNode.html#aaeacd8e3d67a4622e508db17306a6c45',1,'Node']]]
+  ['getaliases_30',['getAliases',['../classNode.html#afecbaa9bc27769025d96778cd1cfa4a5',1,'Node']]],
+  ['getallnodes_31',['getAllNodes',['../classTree.html#ad73749aa839bb7fc6ed9bc3fa32221b1',1,'Tree']]],
+  ['getchildren_32',['getChildren',['../classNode.html#a21bab5bbd6827f6c186a043caaee881b',1,'Node']]],
+  ['getdescription_33',['getDescription',['../classNode.html#a12d2432cd31bf3e1bcf19a115aae6f00',1,'Node']]],
+  ['getname_34',['getName',['../classNode.html#a2ddaa1e6fdada0bec680128d9e732162',1,'Node']]],
+  ['getnamecleaned_35',['getNameCleaned',['../classNode.html#a3e1306f3cc18b4b307ed9fde65d6dcb6',1,'Node']]],
+  ['getparent_36',['getParent',['../classNode.html#aaeacd8e3d67a4622e508db17306a6c45',1,'Node']]]
 ];

@@ -93,8 +93,7 @@ Collaboration diagram for Node:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8b7c1c0f9f29e8617224a46271d11bd7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a8b7c1c0f9f29e8617224a46271d11bd7">Node</a> (std::string name, std::string description=&quot;&quot;, std::vector&lt; std::string &gt; aliases=std::vector&lt; std::string &gt;())</td></tr>
 <tr class="separator:a8b7c1c0f9f29e8617224a46271d11bd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc0dca05d7f000608f2fad331fbc1a87"><td class="memItemLeft" align="right" valign="top"><a id="acc0dca05d7f000608f2fad331fbc1a87"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>rateNameSimilarity</b> (const std::shared_ptr&lt; <a class="el" href="classNode.html">Node</a> &gt; &amp;other_node) const</td></tr>
+<tr class="memitem:acc0dca05d7f000608f2fad331fbc1a87"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#acc0dca05d7f000608f2fad331fbc1a87">rateNameSimilarity</a> (const std::shared_ptr&lt; <a class="el" href="classNode.html">Node</a> &gt; &amp;other_node) const</td></tr>
 <tr class="separator:acc0dca05d7f000608f2fad331fbc1a87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab81c7a276ccb38c15bea38d7fd4ddb51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#ab81c7a276ccb38c15bea38d7fd4ddb51">addAlias</a> (const std::string &amp;alias)</td></tr>
 <tr class="separator:ab81c7a276ccb38c15bea38d7fd4ddb51"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -105,7 +104,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rateNameSimilarity</b>
 <tr class="memitem:ae8ddbb9e189f90d0f19ea08f5ba00ec9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#ae8ddbb9e189f90d0f19ea08f5ba00ec9">removeChild</a> (const std::string &amp;node_name)</td></tr>
 <tr class="separator:ae8ddbb9e189f90d0f19ea08f5ba00ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e1306f3cc18b4b307ed9fde65d6dcb6"><td class="memItemLeft" align="right" valign="top"><a id="a3e1306f3cc18b4b307ed9fde65d6dcb6"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getNameCleaned</b> () const</td></tr>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a3e1306f3cc18b4b307ed9fde65d6dcb6">getNameCleaned</a> () const</td></tr>
+<tr class="memdesc:a3e1306f3cc18b4b307ed9fde65d6dcb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes special characters and changes all left characters to lowercase from <a class="el" href="classNode.html">Node</a>'s name. <br /></td></tr>
 <tr class="separator:a3e1306f3cc18b4b307ed9fde65d6dcb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ddaa1e6fdada0bec680128d9e732162"><td class="memItemLeft" align="right" valign="top"><a id="a2ddaa1e6fdada0bec680128d9e732162"></a>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a2ddaa1e6fdada0bec680128d9e732162">getName</a> () const</td></tr>
@@ -232,6 +232,30 @@ const std::shared_ptr&lt; <a class="el" href="classNode.html">Node</a> &gt; &amp
 <p>Appends the list of children (children_). </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">node</td><td><a class="el" href="classNode.html">Node</a> to append the children_ list. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acc0dca05d7f000608f2fad331fbc1a87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc0dca05d7f000608f2fad331fbc1a87">&#9670;&nbsp;</a></span>rateNameSimilarity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Node::rateNameSimilarity </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classNode.html">Node</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other_node</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Rates a node based on their name similarity (from the end). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other_node</td><td><a class="el" href="classNode.html">Node</a> that is compared to (this) node. </td></tr>
   </table>
   </dd>
 </dl>
