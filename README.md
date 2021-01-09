@@ -14,6 +14,8 @@ grafu oraz oferuje sposób na dodawania elementów automatycznie na podstawie ic
 np. ilSHADE jest być podłączany do węzła SHADE. Interfejs aplikacji jest graficzny
 (przeglądarkowy) a logika operacji na grafie jest zaimplementowana w C++.
 
+## Instalacja manualna
+
 ### Zależności
 
 - Boost 1.71+, wraz z skompilowanymi:
@@ -132,6 +134,16 @@ Uwaga, część kodu źródłowego części Python została wygenerowana przez D
 ```bash
 django-admin startproject web_config .
 python3 manage.py startapp web_api
+```
+## Intalacja przy użyciu Docker
+
+W razie problemów z instalacją manualną gotową aplikację można zainstalować za pomocą obrazu [ianczyko/method-development-visualizer-backend](https://hub.docker.com/repository/docker/ianczyko/method-development-visualizer-backend).
+```bash
+docker run -i -p 8000:8000/tcp -t --entrypoint /bin/bash ianczyko/method-development-visualizer-backend
+
+# następnie wewnątrz powłoki kontenera (uruchomienie serwera Django)
+cd web
+pipenv run python3 manage.py runserver
 ```
 
 ## Frontend
