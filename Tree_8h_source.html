@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Method development: methodDevelopment/src/Tree.hpp Source File</title>
+<title>Method development: methodDevelopment/src/Tree.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -66,15 +66,15 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">Tree.hpp</div>  </div>
+<div class="title">Tree.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//Author: Anczykowski Igor</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef METHOD_DEVELOPMENT_VISUALIZER_BACKEND_TREE_HPP</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define METHOD_DEVELOPMENT_VISUALIZER_BACKEND_TREE_HPP</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef METHOD_DEVELOPMENT_VISUALIZER_BACKEND_TREE_H</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define METHOD_DEVELOPMENT_VISUALIZER_BACKEND_TREE_H</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;Node.hpp&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;Node.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classTree.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classTree.html">Tree</a> {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    std::shared_ptr&lt;Node&gt; root_node_;</div>
@@ -90,15 +90,15 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;};</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//METHOD_DEVELOPMENT_VISUALIZER_BACKEND_TREE_HPP</span></div>
-<div class="ttc" id="aclassTree_html"><div class="ttname"><a href="classTree.html">Tree</a></div><div class="ttdef"><b>Definition:</b> Tree.hpp:10</div></div>
-<div class="ttc" id="aclassTree_html_a113c053862e882294815d2fed3db123f"><div class="ttname"><a href="classTree.html#a113c053862e882294815d2fed3db123f">Tree::Tree</a></div><div class="ttdeci">Tree(const std::shared_ptr&lt; Node &gt; &amp;root_node)</div><div class="ttdef"><b>Definition:</b> Tree.cpp:9</div></div>
-<div class="ttc" id="aclassTree_html_a17de18307fee659df8dc399c47b2f848"><div class="ttname"><a href="classTree.html#a17de18307fee659df8dc399c47b2f848">Tree::addNode</a></div><div class="ttdeci">void addNode(const std::shared_ptr&lt; Node &gt; &amp;node, const std::string &amp;parent_name)</div><div class="ttdef"><b>Definition:</b> Tree.cpp:76</div></div>
-<div class="ttc" id="aclassTree_html_a99ce9681951f678bf74c3c5426d85d4f"><div class="ttname"><a href="classTree.html#a99ce9681951f678bf74c3c5426d85d4f">Tree::addNodeAuto</a></div><div class="ttdeci">void addNodeAuto(const std::shared_ptr&lt; Node &gt; &amp;node)</div><div class="ttdef"><b>Definition:</b> Tree.cpp:89</div></div>
-<div class="ttc" id="aclassTree_html_abd62df5b591afaba0d15029ae45f9d59"><div class="ttname"><a href="classTree.html#abd62df5b591afaba0d15029ae45f9d59">Tree::setRootNode</a></div><div class="ttdeci">void setRootNode(const std::shared_ptr&lt; Node &gt; &amp;root_node)</div><div class="ttdef"><b>Definition:</b> Tree.cpp:16</div></div>
-<div class="ttc" id="aclassTree_html_ad73749aa839bb7fc6ed9bc3fa32221b1"><div class="ttname"><a href="classTree.html#ad73749aa839bb7fc6ed9bc3fa32221b1">Tree::getAllNodes</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; Node &gt; &gt; getAllNodes()</div><div class="ttdef"><b>Definition:</b> Tree.cpp:55</div></div>
-<div class="ttc" id="aclassTree_html_add6919bd07e185b2832d9a3010ffad48"><div class="ttname"><a href="classTree.html#add6919bd07e185b2832d9a3010ffad48">Tree::removeNode</a></div><div class="ttdeci">void removeNode(const std::string &amp;node_name) const</div><div class="ttdef"><b>Definition:</b> Tree.cpp:45</div></div>
-<div class="ttc" id="aclassTree_html_af0b61152259edc09573303622a51a3dc"><div class="ttname"><a href="classTree.html#af0b61152259edc09573303622a51a3dc">Tree::findNode</a></div><div class="ttdeci">std::shared_ptr&lt; Node &gt; findNode(const std::string &amp;node_name) const</div><div class="ttdef"><b>Definition:</b> Tree.cpp:24</div></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//METHOD_DEVELOPMENT_VISUALIZER_BACKEND_TREE_H</span></div>
+<div class="ttc" id="aclassTree_html"><div class="ttname"><a href="classTree.html">Tree</a></div><div class="ttdef"><b>Definition:</b> Tree.h:10</div></div>
+<div class="ttc" id="aclassTree_html_a113c053862e882294815d2fed3db123f"><div class="ttname"><a href="classTree.html#a113c053862e882294815d2fed3db123f">Tree::Tree</a></div><div class="ttdeci">Tree(const std::shared_ptr&lt; Node &gt; &amp;root_node)</div><div class="ttdef"><b>Definition:</b> Tree.cc:9</div></div>
+<div class="ttc" id="aclassTree_html_a17de18307fee659df8dc399c47b2f848"><div class="ttname"><a href="classTree.html#a17de18307fee659df8dc399c47b2f848">Tree::addNode</a></div><div class="ttdeci">void addNode(const std::shared_ptr&lt; Node &gt; &amp;node, const std::string &amp;parent_name)</div><div class="ttdef"><b>Definition:</b> Tree.cc:76</div></div>
+<div class="ttc" id="aclassTree_html_a99ce9681951f678bf74c3c5426d85d4f"><div class="ttname"><a href="classTree.html#a99ce9681951f678bf74c3c5426d85d4f">Tree::addNodeAuto</a></div><div class="ttdeci">void addNodeAuto(const std::shared_ptr&lt; Node &gt; &amp;node)</div><div class="ttdef"><b>Definition:</b> Tree.cc:89</div></div>
+<div class="ttc" id="aclassTree_html_abd62df5b591afaba0d15029ae45f9d59"><div class="ttname"><a href="classTree.html#abd62df5b591afaba0d15029ae45f9d59">Tree::setRootNode</a></div><div class="ttdeci">void setRootNode(const std::shared_ptr&lt; Node &gt; &amp;root_node)</div><div class="ttdef"><b>Definition:</b> Tree.cc:16</div></div>
+<div class="ttc" id="aclassTree_html_ad73749aa839bb7fc6ed9bc3fa32221b1"><div class="ttname"><a href="classTree.html#ad73749aa839bb7fc6ed9bc3fa32221b1">Tree::getAllNodes</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; Node &gt; &gt; getAllNodes()</div><div class="ttdef"><b>Definition:</b> Tree.cc:55</div></div>
+<div class="ttc" id="aclassTree_html_add6919bd07e185b2832d9a3010ffad48"><div class="ttname"><a href="classTree.html#add6919bd07e185b2832d9a3010ffad48">Tree::removeNode</a></div><div class="ttdeci">void removeNode(const std::string &amp;node_name) const</div><div class="ttdef"><b>Definition:</b> Tree.cc:45</div></div>
+<div class="ttc" id="aclassTree_html_af0b61152259edc09573303622a51a3dc"><div class="ttname"><a href="classTree.html#af0b61152259edc09573303622a51a3dc">Tree::findNode</a></div><div class="ttdeci">std::shared_ptr&lt; Node &gt; findNode(const std::string &amp;node_name) const</div><div class="ttdef"><b>Definition:</b> Tree.cc:24</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
