@@ -32,7 +32,7 @@ Instalacja wszystkich zależności:
 sudo apt-get install libboost-all-dev # Boost
 sudo apt-get install cmake # cmake
 sudo apt-get install python3-dev # python3-dev
-sudo apt-get install pip3 # pip3
+sudo apt-get install python3-pip # pip3
 pip3 install pipenv # pipenv
 ```
 
