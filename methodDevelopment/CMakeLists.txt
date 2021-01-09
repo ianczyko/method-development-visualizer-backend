@@ -8,7 +8,7 @@ find_package(Boost REQUIRED COMPONENTS python unit_test_framework)
 set(CMAKE_SHARED_MODULE_PREFIX "")
 
 # Automatically detect source files
-file(GLOB_RECURSE main_SOURCES "src/*.cpp")
+file(GLOB_RECURSE main_SOURCES "src/*.cc")
 file(GLOB_RECURSE main_HEADERS "src/*.h")
 set (main_INCLUDE_DIRS "")
 foreach (_headerFile ${main_HEADERS})

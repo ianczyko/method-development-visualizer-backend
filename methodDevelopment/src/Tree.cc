@@ -1,6 +1,6 @@
 //Author: Anczykowski Igor
 
-#include "Tree.hpp"
+#include "Tree.h"
 #include <queue>
 #include <algorithm>
 
