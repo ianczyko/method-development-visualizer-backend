@@ -7,8 +7,8 @@
 using namespace boost::unit_test;
 using namespace boost::unit_test_framework;
 
-#include "../src/Node.hpp"
-#include "../src/Tree.hpp"
+#include "../src/Node.h"
+#include "../src/Tree.h"
 #include <iostream>
 
 BOOST_AUTO_TEST_SUITE( Node_suite ) //NOLINT

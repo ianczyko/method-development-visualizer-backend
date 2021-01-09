@@ -1,9 +1,9 @@
 //Author: Anczykowski Igor
 
-#ifndef METHOD_DEVELOPMENT_VISUALIZER_BACKEND_TREE_HPP
-#define METHOD_DEVELOPMENT_VISUALIZER_BACKEND_TREE_HPP
+#ifndef METHOD_DEVELOPMENT_VISUALIZER_BACKEND_TREE_H
+#define METHOD_DEVELOPMENT_VISUALIZER_BACKEND_TREE_H
 
-#include "Node.hpp"
+#include "Node.h"
 
 /// Tree class that implements required Tree algorithms on the Tree structure.
 /// @author Igor Anczykowski
@@ -21,4 +21,4 @@ public:
 };
 
 
-#endif //METHOD_DEVELOPMENT_VISUALIZER_BACKEND_TREE_HPP
+#endif //METHOD_DEVELOPMENT_VISUALIZER_BACKEND_TREE_H

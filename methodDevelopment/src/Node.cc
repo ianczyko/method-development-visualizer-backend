@@ -1,7 +1,7 @@
 //Author: Anczykowski Igor
 
 #include <algorithm>
-#include "Node.hpp"
+#include "Node.h"
 
 
 /// Constructor that initializes all the private attributes.

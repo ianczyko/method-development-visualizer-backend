@@ -1,7 +1,7 @@
 //Author: Anczykowski Igor
 #include <boost/python.hpp>
 #include <utility>
-#include "src/Tree.hpp"
+#include "src/Tree.h"
 using namespace boost::python;
 
 class NodePy {
