@@ -79,7 +79,9 @@ void Tree::addNode(const std::shared_ptr<Node> &node, const std::string &parent_
         return;
     }
     auto parent = this->findNode(parent_name);
-    parent->addChild(node);
+    if(parent != nullptr){
+        parent->addChild(node);
+    }
 }
 
 /// Adds a Node to a tree automatically based on Node::rateNameSimilarity() rating.

@@ -233,11 +233,6 @@ BOOST_AUTO_TEST_SUITE( Tree_suite ) //NOLINT
         auto node_1_2 = std::make_shared<Node>("node_1_2");
         auto node_2 = std::make_shared<Node>("node_2");
         auto node_3 = std::make_shared<Node>("node_3");
-        node_1->addChild(node_1_1);
-        node_1->addChild(node_1_2);
-        node->addChild(node_1);
-        node->addChild(node_2);
-        node->addChild(node_3);
         Tree tree(nullptr);
         tree.addNode(node, ""); // special case - add root by empty string as parent
         tree.addNode(node_1, "node");
@@ -252,6 +247,15 @@ BOOST_AUTO_TEST_SUITE( Tree_suite ) //NOLINT
         BOOST_REQUIRE(root->getChildren()[0]->getName() == "node_1");
         BOOST_CHECK(root->getChildren()[0]->getChildren()[0]->getName() == "node_1_1");
         BOOST_CHECK(root->getChildren()[0]->getChildren()[1]->getName() == "node_1_2");
+    }
+    BOOST_AUTO_TEST_CASE( Tree_add_node_non_existing ) { //NOLINT
+        auto node = std::make_shared<Node>("node");
+        auto node_1 = std::make_shared<Node>("node_1");
+        Tree tree(nullptr);
+        tree.addNode(node, ""); // special case - add root by empty string as parent
+        tree.addNode(node_1, "node_non_existing");
+        auto root = tree.getRootNode();
+        BOOST_CHECK(root->getChildren().empty());
     }
     BOOST_AUTO_TEST_CASE( Tree_add_node_auto ) { //NOLINT
         auto node_de = std::make_shared<Node>("DE");
