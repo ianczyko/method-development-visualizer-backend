@@ -1,6 +1,6 @@
 body{
     margin: 0 0 ;
-    background-color: #5d5c61;
+    background-color: #f9e0ae;
     height: 100%;
 }
 
@@ -22,7 +22,7 @@ body{
     margin:auto;
     height: 100px;
     width: 100%;
-    background-color: #557a95;
+    background-color: #682c0e;
 }
 .underHeaderLine{
     height: 840px;
@@ -32,12 +32,12 @@ body{
 #displayGraphDIV{
     width: 70%;
     height:840px;
-    background-color: #b1a296;
+    background-color: #f9e0ae;
 }
 #fillData{
     width: 30%;
     height:840px;
-    background-color: #7395AE;
+    background-color: #c24914;
     position: absolute;
     align-content: center;
 }
@@ -53,7 +53,8 @@ body{
 .headerText{
     text-align: center;
     font-size: 70px;
-    width: 100%;;
+    width: 100%;
+    color: white;
 }
 .inputForm{
     padding-top: 20px;
@@ -75,4 +76,134 @@ body{
 #aliasesInput{
     height:50px;
     width: 70%;  
+}
+#AddDIValiases{
+    height: 20px;
+}
+.PickOptionDIV{
+    width: 100%;
+    height: 10%;
+    background-color: #f3c66c;
+}
+.PickOptionBTN{
+    margin: 0;
+    position: relative;
+    top: 50%;
+    left: 20%;
+    height: 80%;
+    width: 30%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #c24914;
+    color: white;
+    font-size: 20px;
+    border-style: hidden;
+    font-weight: bold;
+}
+.OptionDIV{
+    width: 100%; 
+    height: 90%;
+    background-color:#f3c66c;
+}
+#deleteDIV{
+    position: relative;
+    top:30%;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+}
+#deleteDIVInput{
+    height: 30px;
+    width: 80%;
+}
+#deleteDIVBTN{
+    width: 50%;
+    height: 30px;
+    background-color: #c24914;
+    color: white;
+    border-style: hidden;
+    font-weight: bold;
+}
+#AddDIV{
+    background-color: #f3c66c;
+    position: absolute;
+    text-align: center;
+}
+.radioButton{
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+}
+.AddDIVtext{
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+#AddDIVBTNaliases{
+    background-color: #c24914;
+    color: white;
+    border-style: hidden;
+    font-weight: bold;
+    position: absolute;
+    margin-left: 5px;
+}
+.AddDIVinput{
+    height: 30px;
+    width: 50%;
+}
+#AddDIVBTN{
+    background-color: #c24914;
+    color: white;
+    border-style: hidden;
+    font-weight: bold;
+}
+#AddDIVdescription{
+    height: 20%;
+}
+.newAlias{
+    background-color: #c24914;
+    color: white;
+    border-style: hidden;
+    font-weight: bold;
+    width: 52%;
+    height: 25px;
+    font-size: 20px;
+
+    margin:3% auto;
+    
+}
+#ParentLabel{
+    color: white;
+    border-style: hidden;
+    font-weight: bold;
+    font-size: 25px;
+    margin:3% auto;
+    width: 50%;
+}
+#InfoDIV{
+    position: absolute;
+}
+#InfoDIVin{
+    text-align: center;
+    background-color: #c24914;
+    width: 80%;
+    height: 80%;
+    margin: 20% auto;
+    border-style: solid;
+    border-color: #682c0e;
+}
+.InfoDIVlabel{
+    position: relative;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 15%;
+}
+.InfoDIVlabelF{
+    position: relative;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
 }
