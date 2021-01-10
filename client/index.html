@@ -17,25 +17,100 @@
       <div class="underHeaderLine">
         <div class="Flex" id="displayGraphDIV"></div>
         <div class="Flex" id="fillData">
-          <div class="inputForm">
-            <h1>Name</h1>
-            <input type="text" id="nameInput" name="fname">
+          <div class="PickOptionDIV">   
+            <button class="PickOptionBTN" id="AddBTN">Add node</button>
+            <button class="PickOptionBTN" id="DeleteBTN">Delete node</button>
+            <button class="PickOptionBTN" id="InfoBTN">Info</button>
           </div>
-          <div class="inputForm">
-            <h1>Description</h1>
-            <input type="text" id="descriptionInput" name="fname">
+          <div class="OptionDIV" id="AddDIV">
+            <p class="AddDIVtext">Name</p>
+            <input type="text" class="AddDIVinput" id="AddDIVname">
+            <p class="AddDIVtext">Description</p>
+            <textarea name="text" class="AddDIVinput" rows="10" cols="30" id="AddDIVdescription"></textarea>
+            <p class="AddDIVtext">Aliases</p>
+            <div>
+              <input type="text" class="AddDIVinput" id="AddDIValiases">
+              <button class="AddDIVtext" id="AddDIVBTNaliases">+</button>
+            </div>
+            </br>
+            </br>
+            <label class="radioButton"><input type="radio" id="radioButtonManual" name="chose"> Manual</label>
+            <label class="radioButton"><input type="radio" id="radioButtonAuto" name="chose"> Auto</label>
+            </br>
+            </br>
+            </br>
+            <button class="AddDIVtext" id="AddDIVBTN">Add node</button>
+            
+            
           </div>
-          <div class="inputForm">
-            <h1>Parent</h1>
-            <input type="text" id="parentInput" name="fname">
+          <div class="OptionDIV" id="DeleteDIV">
+            <div id="deleteDIV">
+              Enter node name to delete
+            </br>
+            </br>
+            <input type="text" id=deleteDIVInput>
+            </br>
+            </br>
+            <button id=deleteDIVBTN>DELETE</button>
           </div>
-          <div class="inputForm">
-            <h1>Aliases</h1>
-            <input type="text" id="aliasesInput" name="fname">
+        </div>
+        <div class="OptionDIV" id="InfoDIV">
+          <div id="InfoDIVin">
+            <div class="InfoDIVlabel" id="InfoDIVname"></div></br>
+            <div class="InfoDIVlabel" id="InfoDIVdescription"></div></br>
+            <div class="InfoDIVlabel" id="InfoDIVparent"></div></br>
+            <div class="InfoDIVlabel" id="InfoDIValiases"></div>
           </div>
         </div>
     </div>
     <script>
+      
+      const GETurl = 'http://localhost:8000/api/graph/';
+      const DELETEurl = 'http://localhost:8000/api/node/';
+      const ManualADDurl = 'http://localhost:8000/api/add/manual/';
+      const AutoADDurl = 'http://localhost:8000/api/add/auto/';
+      
+      reloadPage();
+      document.getElementById('AddDIV').style.display = "none";
+      document.getElementById('DeleteDIV').style.display = "none";
+      document.getElementById('InfoDIV').style.display = "block";
+      document.getElementById('radioButtonAuto').checked = true;
+      
+      function showAddDIV(){
+        console.log("showADDfunc");
+        document.getElementById('AddDIV').style.display = "block";
+        document.getElementById('DeleteDIV').style.display = "none";
+        document.getElementById('InfoDIV').style.display = "none";
+      }
+      function showDeleteDIV(){
+        console.log("showDELETEfunc");
+        document.getElementById('AddDIV').style.display = "none";
+        document.getElementById('DeleteDIV').style.display = "block";
+        document.getElementById('InfoDIV').style.display = "none";
+      }
+      function showInfoDIV(){
+        console.log("showINFOfunc");
+        document.getElementById('AddDIV').style.display = "none";
+        document.getElementById('DeleteDIV').style.display = "none";
+        document.getElementById('InfoDIV').style.display = "block";
+      }
+      function deleteNode(){
+        console.log(DELETEurl+document.getElementById("deleteDIVInput").value);
+        var Http = new XMLHttpRequest();
+        Http.open("DELETE", DELETEurl+document.getElementById("deleteDIVInput").value+"/");
+        Http.send();
+        location.reload();
+      }
+      
+      document.getElementById('AddBTN').addEventListener("click",showAddDIV);
+      document.getElementById('DeleteBTN').addEventListener("click",showDeleteDIV);
+      document.getElementById('InfoBTN').addEventListener("click",showInfoDIV);
+      document.getElementById('deleteDIVBTN').addEventListener("click",deleteNode);
+      document.getElementById('AddDIVBTN').addEventListener("click",addNodeBTN);
+      document.getElementById('AddDIVBTNaliases').addEventListener("click",addNodeAlias);
+      document.getElementById('radioButtonAuto').addEventListener("click",radioButtonAutoFunc);
+      document.getElementById('radioButtonManual').addEventListener("click",radioButtonManualFunc);
+
       const elementsArray=[]
       function addNode(nodeName){
         elementsArray.push({
@@ -59,73 +134,152 @@
           if(array[i].name==id)return array[i];
         }
       }
-      const Http = new XMLHttpRequest();
-      const url = 'http://localhost:8000/api/graph/';
-      Http.open("GET", url);
-      Http.send();
-      responseText = '';
       let responseObj;
-      Http.onload=()=>{
-        responseObj=JSON.parse(Http.response)
-        for(i=0;i<responseObj.nodes.length;i++){
-          node=responseObj.nodes[i];
-          if(node.parent==""){
-            addNode(node.name);
-          }else{
-            addNode(node.name);
-            addConnection(node.name, node.parent);
-          }
-        }
-        var cy = cytoscape({
-          container: document.getElementById('displayGraphDIV'),
-          elements: elementsArray,
-          style: [{
-            selector:'node',
-            style:{
-              'label':'data(id)',
+      function reloadPage(){
+        const Http = new XMLHttpRequest();
+        Http.open("GET", GETurl);
+        Http.send();
+        responseText = '';
+        Http.onload=()=>{
+          responseObj=JSON.parse(Http.response)
+          for(i=0;i<responseObj.nodes.length;i++){
+            node=responseObj.nodes[i];
+            if(node.parent==""){
+              addNode(node.name);
+            }else{
+              addNode(node.name);
+              addConnection(node.name, node.parent);
             }
-          }],
-          style: cytoscape.stylesheet()
-          .selector('edge')
-            .css({
-              'width': 3,
-              'line-color': '#369',
-              'target-arrow-color': '#369',
-              'target-arrow-shape': 'triangle',
-              'label': 'data(label)',
-              'font-size': '14px',
-              'color': '#777'
-            })
-          .selector('node')
-            .css({
-              'content': 'data(id)',
-              'text-valign': 'center',
-              'color': 'white',
-              'text-outline-width': 2,
-              'text-outline-color': '#888',
-              'background-color': '#888'
-            })
-          .selector(':selected')
-            .css({
-              'background-color': 'black',
-              'line-color': 'black',
-              'target-arrow-color': 'black',
-              'source-arrow-color': 'black',
-              'text-outline-color': 'black'
-              }),
-        });
-        cy.on('click','node', function(evt){
-          var node=evt.target;
-          document.getElementById('nameInput').value=getNodeByID(node.id(),responseObj.nodes).name;
-          document.getElementById('descriptionInput').value=getNodeByID(node.id(),responseObj.nodes).description;
-          if(getNodeByID  (node.id(),responseObj.nodes).parent!=""){
-            document.getElementById('parentInput').value=getNodeByID(node.id(),responseObj.nodes).parent;
-          }else{
-            document.getElementById('parentInput').value="none";
           }
-          document.getElementById('aliasesInput').value=getNodeByID(node.id(),responseObj.nodes).aliases.join(',');
-        })
+          if(responseObj.nodes.length!=0){
+            document.getElementById('InfoDIVname').innerHTML='Name: '+responseObj.nodes[0].name;
+            document.getElementById('InfoDIVdescription').innerHTML='Description: '+responseObj.nodes[0].description;
+            document.getElementById('InfoDIVparent').innerHTML='Parent: '+'-';
+            document.getElementById('InfoDIValiases').innerHTML='Aliases: '+responseObj.nodes[0].aliases.join(', ');
+          }
+          var cy = cytoscape({
+            container: document.getElementById('displayGraphDIV'),
+            elements: elementsArray,
+            style: [{
+              selector:'node',
+              style:{
+                'label':'data(id)',
+              }
+            }],
+            style: cytoscape.stylesheet()
+            .selector('edge')
+              .css({
+                'width': 3,
+                'line-color': '#369',
+                'target-arrow-color': '#369',
+                'target-arrow-shape': 'triangle',
+                'label': 'data(label)',
+                'font-size': '14px',
+                'color': '#ffffff',
+                'target-arrow-color': '#369',
+                'target-arrow-shape': 'triangle',
+                'curve-style': 'bezier'
+              })
+            .selector('node')
+              .css({
+                'content': 'data(id)',
+                'text-valign': 'center',
+                'color': 'white',
+                'text-outline-width': 2,
+                'text-outline-color': '#888',
+                'background-color': '#888'
+              })
+            .selector(':selected')
+              .css({
+                'background-color': 'black',
+                'line-color': 'black',
+                'target-arrow-color': 'black',
+                'source-arrow-color': 'black',
+                'text-outline-color': 'black'
+                }),
+          });
+          cy.on('click','node', function(evt){
+            var node=evt.target;
+            document.getElementById('deleteDIVInput').value=node.id();
+            console.log(document.getElementById('deleteDIVInput').value);
+
+            if(!isAuto){
+              document.getElementById('ParentName').innerHTML=node.id();
+            }
+            document.getElementById('InfoDIVname').innerHTML='Name: '+getNodeByID(node.id(),responseObj.nodes).name;
+            document.getElementById('InfoDIVdescription').innerHTML='Description: '+getNodeByID(node.id(),responseObj.nodes).description;
+            if(getNodeByID  (node.id(),responseObj.nodes).parent!=""){
+              document.getElementById('InfoDIVparent').innerHTML='Parent: '+getNodeByID(node.id(),responseObj.nodes).parent;
+            }else{
+              document.getElementById('InfoDIVparent').innerHTML="Parent: -";
+            }
+            document.getElementById('InfoDIValiases').innerHTML='Aliases: '+getNodeByID(node.id(),responseObj.nodes).aliases.join(', ');
+          })
+        }
       }
+
+      //ADD DIV
+      var isAuto = true;
+      var aliases = [];
+
+      function addNodeAlias(){
+        var btn = document.getElementById('AddDIVBTNaliases');
+        btn.insertAdjacentHTML('afterend', '<div class="newAlias">'+document.getElementById("AddDIValiases").value+'</div>');
+        aliases.push(document.getElementById("AddDIValiases").value);
+        document.getElementById("AddDIValiases").value="";
+        console.log(JSON.parse(JSON.stringify(aliases)));
+        
+      }
+      function addNodeBTN(){
+        var nameS = document.getElementById("AddDIVname").value;
+        var descriptionS = document.getElementById("AddDIVdescription").value;
+        var aliasesDIV = document.getElementsByClassName("newAlias");
+        for(var i=aliasesDIV.length-1;i>=0;i--){
+          aliasesDIV[i].remove();
+        }
+        var url;
+        var parentS;
+        if(document.getElementById("radioButtonAuto").checked==true){
+          parentS="";
+          url=AutoADDurl;
+        }else{
+          parentS=document.getElementById('ParentName').textContent;
+          url=ManualADDurl;
+        }
+        var request = {
+          name: nameS,
+          description: descriptionS,
+          parent:parentS,
+          aliases: JSON.parse(JSON.stringify(aliases)),
+        }
+        
+        const Http = new XMLHttpRequest();
+        Http.open("POST", url, true);
+        Http.send(JSON.stringify(request));
+        console.log(JSON.stringify(request));
+        location.reload();
+      }
+      function radioButtonAutoFunc(){
+        if(!isAuto){
+          isAuto=true;
+          console.log("Auto");
+          var element=document.getElementById('ParentLabel');
+          element.remove();
+        }
+      }
+      function radioButtonManualFunc(){
+        if(isAuto){
+          isAuto=false;
+          console.log("Manual");
+          var element=document.getElementById('AddDIVBTN');
+          element.insertAdjacentHTML('beforebegin', 
+            '<div id="ParentLabel"><label>Parent: </label><label id="ParentName">'+responseObj.nodes[0].name+'</label></div>'
+          );
+        }
+      }
+
+
+
     </script>
     
 </body>
