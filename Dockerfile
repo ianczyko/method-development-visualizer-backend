@@ -23,7 +23,7 @@ RUN cd methodDevelopment ; mkdir build ; cd build ; cmake .. ; make
 
 # Install Django
 WORKDIR /method-development-visualizer-backend/web
-RUN pipenv install django==3.1.3
+RUN pipenv install --dev
 
 WORKDIR /method-development-visualizer-backend
 EXPOSE 8000

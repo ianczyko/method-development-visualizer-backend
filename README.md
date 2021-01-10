@@ -64,7 +64,7 @@ W katalogu projektu:
 
 ```bash
 cd web
-pipenv install django==3.1.3
+pipenv install --dev
 pipenv shell
 # następnie wewnąrz wirtualnej powłoki:
 python3 manage.py runserver
