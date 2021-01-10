@@ -22,6 +22,7 @@ void Tree::setRootNode(const std::shared_ptr<Node> &root_node) {
 /// This algorithm uses a Breadth-first search algorithm.
 /// @param node_name Name of the Node to be found.
 std::shared_ptr<Node> Tree::findNode(const std::string &node_name) const {
+    if(this->root_node_ == nullptr) return nullptr;
     std::queue<std::shared_ptr<Node>> q;
     q.push(this->root_node_);
     // BFS algorithm
@@ -42,10 +43,12 @@ std::shared_ptr<Node> Tree::findNode(const std::string &node_name) const {
 ///
 /// This requires the findNode() method.
 /// @param node_name Name of the Node to be removed.
-void Tree::removeNode(const std::string &node_name) const {
+void Tree::removeNode(const std::string &node_name) {
     auto parent_of_searched = this->findNode(node_name)->getParent();
-    if(parent_of_searched != nullptr){
+    if(parent_of_searched != nullptr) {
         parent_of_searched->removeChild(node_name);
+    } else {
+        this->root_node_ = nullptr;
     }
 }
 
@@ -54,6 +57,7 @@ void Tree::removeNode(const std::string &node_name) const {
 /// The Nodes are ordered the same to the Breadth-first search algorithm.
 std::vector<std::shared_ptr<Node>> Tree::getAllNodes() {
     std::vector<std::shared_ptr<Node>> all_nodes;
+    if(this->root_node_ == nullptr) return all_nodes;
     std::queue<std::shared_ptr<Node>> q;
     q.push(this->root_node_);
     // BFS algorithm
@@ -75,6 +79,7 @@ std::vector<std::shared_ptr<Node>> Tree::getAllNodes() {
 /// @param parent_name Name of the parent of the node to be added.
 void Tree::addNode(const std::shared_ptr<Node> &node, const std::string &parent_name) {
     if(parent_name.empty()){
+        node->setParent(nullptr);
         this->setRootNode(node);
         return;
     }
@@ -89,6 +94,11 @@ void Tree::addNode(const std::shared_ptr<Node> &node, const std::string &parent_
 /// Additionally, if the rating is the same, it picks the node with a shorter name.
 /// @param node Node object to be added.
 void Tree::addNodeAuto(const std::shared_ptr<Node> &node) {
+    if(this->root_node_ == nullptr){
+        node->setParent(nullptr);
+        this->root_node_ = node;
+        return;
+    }
     const auto & nodes = this->getAllNodes();
     auto parent = *std::max_element( nodes.begin(), nodes.end(),
         [&node](const std::shared_ptr<Node> &a, const std::shared_ptr<Node> &b) {

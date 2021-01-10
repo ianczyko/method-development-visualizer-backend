@@ -205,6 +205,14 @@ BOOST_AUTO_TEST_SUITE( Tree_suite ) //NOLINT
         BOOST_REQUIRE(tree.findNode("node_1_1") == nullptr);
         BOOST_REQUIRE(tree.findNode("node_1_2") == nullptr);
     }
+    BOOST_AUTO_TEST_CASE( Tree_remove_node_root ) { //NOLINT
+        auto node = std::make_shared<Node>("node");
+        auto node_1 = std::make_shared<Node>("node_1");
+        node->addChild(node_1);
+        Tree tree(node);
+        tree.removeNode("node");
+        BOOST_REQUIRE(tree.getRootNode() == nullptr);
+    }
     BOOST_AUTO_TEST_CASE( Tree_get_all_nodes ) { //NOLINT
         auto node = std::make_shared<Node>("node");
         auto node_1 = std::make_shared<Node>("node_1");
@@ -271,5 +279,12 @@ BOOST_AUTO_TEST_SUITE( Tree_suite ) //NOLINT
         BOOST_CHECK(root->getChildren()[0]->getChildren()[0]->getName() == "ILSHADE");
         BOOST_CHECK(root->getChildren()[0]->getChildren()[0]->getParent()->getName() == "SHADE");
         BOOST_CHECK(root->getChildren()[0]->getChildren()[1]->getName() == "XSHADE");
+    }
+    BOOST_AUTO_TEST_CASE( Tree_add_node_auto_root ) { //NOLINT
+        auto node_de = std::make_shared<Node>("DE");
+        Tree tree(nullptr);
+        tree.addNodeAuto(node_de);
+        auto root = tree.getRootNode();
+        BOOST_CHECK(root == node_de);
     }
 BOOST_AUTO_TEST_SUITE_END() //NOLINT
