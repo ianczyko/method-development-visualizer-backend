@@ -74,7 +74,7 @@ Po wykonaniu powyższych kroków, poniższy adres powinien zwrócić przykładow
 
 - [localhost:8000/api/graph/](http://localhost:8000/api/graph/)
 
-Powinien on zwrócić:
+Powinien on zwrócić dane w formacie:
 
 ```json
 {
@@ -89,7 +89,15 @@ Powinien on zwrócić:
                 "De."
             ]
         },
-        ...
+        {
+            "name": "SHADE",
+            "description": "Opis algorytmu SHADE",
+            "parent": "DE",
+            "aliases": [
+                "Shade",
+                "SHA-DE"
+            ]
+        }
     ]
 }
 ```
