@@ -1,0 +1,1 @@
+{"nodes": [{"id": 1, "name": "DE", "description": "Opis algorytmu DE", "parent": "", "aliases": ["de", "De", "De."]}, {"id": 2, "name": "SHADE", "description": "Opis algorytmu SHADE", "parent": "DE", "aliases": ["Shade", "SHA-DE"]}, {"id": 3, "name": "JADE", "description": "Opis algorytmu JADE", "parent": "DE", "aliases": []}]}
