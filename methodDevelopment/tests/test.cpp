@@ -79,6 +79,11 @@ BOOST_AUTO_TEST_SUITE( Node_suite ) //NOLINT
         auto node_child = std::make_shared<Node>("foo");
         BOOST_REQUIRE(node_parent->rateNameSimilarity(node_child) == 0);
     }
+    BOOST_AUTO_TEST_CASE( Node_rate_name_similarity_no_similarity_edge_case ) { //NOLINT
+        auto node_parent = std::make_shared<Node>("JADE");
+        auto node_child = std::make_shared<Node>("SHADE");
+        BOOST_REQUIRE(node_parent->rateNameSimilarity(node_child) == 0);
+    }
     BOOST_AUTO_TEST_CASE( Node_add_and_remove_alias ) { //NOLINT
         std::vector<std::string> aliases;
         Node node("SHADE", "Description...", aliases);
