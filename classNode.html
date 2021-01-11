@@ -253,7 +253,8 @@ const std::shared_ptr&lt; <a class="el" href="classNode.html">Node</a> &gt; &amp
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Rates a node based on their name similarity (from the end). </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Rates a node based on their name similarity (from the end).</p>
+<p>If other_node's name contains parent name at the end, the score is set to the length of the parent name. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">other_node</td><td><a class="el" href="classNode.html">Node</a> that is compared to (this) node. </td></tr>
   </table>
