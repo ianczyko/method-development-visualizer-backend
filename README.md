@@ -89,21 +89,7 @@ Powinien on zwrócić:
                 "De."
             ]
         },
-        {
-            "name": "SHADE",
-            "description": "Opis algorytmu SHADE",
-            "parent": "DE",
-            "aliases": [
-                "Shade",
-                "SHA-DE"
-            ]
-        },
-        {
-            "name": "JADE",
-            "description": "Opis algorytmu JADE",
-            "parent": "DE",
-            "aliases": []
-        }
+        ...
     ]
 }
 ```
