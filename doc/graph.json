@@ -1,1 +1,38 @@
-{"nodes": [{"id": 1, "name": "DE", "description": "Opis algorytmu DE", "parent": "", "aliases": ["de", "De", "De."]}, {"id": 2, "name": "SHADE", "description": "Opis algorytmu SHADE", "parent": "DE", "aliases": ["Shade", "SHA-DE"]}, {"id": 3, "name": "JADE", "description": "Opis algorytmu JADE", "parent": "DE", "aliases": []}]}
+{
+    "nodes": [
+        {
+            "name": "DE",
+            "description": "Opis algorytmu DE",
+            "parent": "",
+            "aliases": [
+                "de",
+                "De",
+                "De."
+            ]
+        },
+        {
+            "name": "SHADE",
+            "description": "Opis algorytmu SHADE",
+            "parent": "DE",
+            "aliases": [
+                "Shade",
+                "SHA-DE"
+            ]
+        },
+        {
+            "name": "JADE",
+            "description": "Opis algorytmu JADE",
+            "parent": "DE",
+            "aliases": []
+        },
+        {
+            "name": "ilSHADE",
+            "description": "Opis algorytmu ilSHADE.",
+            "parent": "SHADE",
+            "aliases": [
+                "il-shade",
+                "il-sha-de"
+            ]
+        }
+    ]
+}
