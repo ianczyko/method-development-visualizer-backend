@@ -90,17 +90,19 @@ void Node::removeChild(const std::string &nodeName) {
 }
 
 /// Rates a node based on their name similarity (from the end).
+///
+/// If other_node's name contains parent name at the end, the score is set to the length of the parent name.
 /// @param other_node Node that is compared to (this) node.
 int Node::rateNameSimilarity(const std::shared_ptr<Node> &other_node) const {
     std::string parent_name = this->getNameCleaned();
     std::string child_name = other_node->getNameCleaned();
-    std::reverse(parent_name.begin(), parent_name.end());
-    std::reverse(child_name.begin(), child_name.end());
-    int min_len = std::min(parent_name.length(), child_name.length());
-    for(int i=0; i<min_len; ++i){
-        if(parent_name[i] != child_name[i]) return i;
+    if(parent_name.length() > child_name.length()){
+        return 0;
     }
-    return min_len;
+    if(std::string(child_name.end() - parent_name.length(), child_name.end()) == parent_name) {
+        return parent_name.length();
+    }
+    return 0;
 
 }
 
